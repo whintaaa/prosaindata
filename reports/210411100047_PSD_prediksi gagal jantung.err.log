@@ -1,0 +1,70 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 173, in wrapped
+    return loop.run_until_complete(inner)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Minta pengguna untuk memasukkan nilai-nilai fitur
+age = float(input("Masukkan nilai Age: "))
+anaemia = int(input("Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): "))
+creatinine_phosphokinase = float(input("Masukkan nilai Creatinine Phosphokinase: "))
+diabetes = int(input("Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): "))
+ejection_fraction = float(input("Masukkan nilai Ejection Fraction: "))
+high_blood_pressure = int(input("Masukkan nilai High Blood Pressure (0 untuk Tidak, 1 untuk Ya): "))
+platelets = float(input("Masukkan nilai Platelets: "))
+serum_creatinine = float(input("Masukkan nilai Serum Creatinine: "))
+serum_sodium = float(input("Masukkan nilai Serum Sodium: "))
+sex = int(input("Masukkan nilai Sex (0 untuk Perempuan, 1 untuk Laki-laki): "))
+smoking = int(input("Masukkan nilai Smoking (0 untuk Tidak, 1 untuk Ya): "))
+time = float(input("Masukkan nilai Time: "))
+
+# Buat data baru untuk prediksi
+new_data_bol= np.array([[anaemia, diabetes, high_blood_pressure, sex, smoking, time]])
+
+new_data_num =np.array([[age, creatinine_phosphokinase, ejection_fraction, platelets, serum_creatinine, serum_sodium]])
+
+# Normalisasi data baru menggunakan scaler yang telah disimpan
+new_data_scaled = scalerr.transform(new_data_num)
+
+new_data = np.array([[age, anaemia, creatinine_phosphokinase, diabetes, ejection_fraction, high_blood_pressure, platelets, serum_creatinine, serum_sodium, sex, smoking, time]])
+
+# Prediksi DEATH_EVENT untuk data baru menggunakan model Logistic Regression
+prediction = loaded_lr_model.predict(new_data)
+
+# Hasil prediksi
+if prediction[0] == 1:
+    print("Hasil Prediksi: Pasien berisiko mengalami DEATH_EVENT")
+else:
+    print("Hasil Prediksi: Pasien tidak berisiko mengalami DEATH_EVENT")
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
+[0;32m<ipython-input-10-0e383ee64a1d>[0m in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [0;31m# Minta pengguna untuk memasukkan nilai-nilai fitur[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mage[0m [0;34m=[0m [0mfloat[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Age: "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0manaemia[0m [0;34m=[0m [0mint[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mcreatinine_phosphokinase[0m [0;34m=[0m [0mfloat[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Creatinine Phosphokinase: "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mdiabetes[0m [0;34m=[0m [0mint[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
+[1;32m    846[0m         """
+[1;32m    847[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 848[0;31m             raise StdinNotImplementedError(
+[0m[1;32m    849[0m                 [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    850[0m             )
+
+[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
+

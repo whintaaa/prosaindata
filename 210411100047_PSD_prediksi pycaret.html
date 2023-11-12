@@ -1,0 +1,872 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret. &#8212; Proyek Sains Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '210411100047_PSD_prediksi pycaret';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan beberapa Model." href="210411100047_PSD_prediksi%20gagal%20jantung.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Proyek Sains Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Proyek Sains Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="210411100047_PSD_Prediksi-Audio-Emosi.html">Analisis dan Prediksi pada Data Audio Emosi</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="210411100047_PSD_prediksi%20gagal%20jantung.html">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan beberapa Model.</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/210411100047_PSD_prediksi pycaret.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F210411100047_PSD_prediksi pycaret.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/210411100047_PSD_prediksi pycaret.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-model-terbaik-menggunakan-pycaret">Mencari Model Terbaik Menggunakan Pycaret</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-terbaik-menggunakan-pycaret">Menyimpan Model terbaik Menggunakan Pycaret</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-light-gradient-boosting-machine-lgbm">Cara Kerja Light Gradient Boosting Machine (LGBM):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-dengan-lgbm">Prediksi dengan LGBM:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-death-event-menggunakan-light-gradient-boosting-machine-lgbm-dengan-data-baru">Prediksi Death_Event Menggunakan Light Gradient Boosting Machine (LGBM) dengan Data Baru</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-dan-prediksi-pada-dataset-heart-failure-clinical-records-menggunakan-pycaret">
+<h1>Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.<a class="headerlink" href="#analisis-dan-prediksi-pada-dataset-heart-failure-clinical-records-menggunakan-pycaret" title="Permalink to this heading">#</a></h1>
+<p>Nama: Whinta Virginia Putri</p>
+<p>NIM: 210411100047</p>
+<p>Proyek Sain Data</p>
+<section id="deskripsi-dataset">
+<h2>Deskripsi Dataset<a class="headerlink" href="#deskripsi-dataset" title="Permalink to this heading">#</a></h2>
+<p>Dataset “Heart failure clinical records” merupakan kumpulan data yang berisi catatan medis dari 299 pasien yang mengalami gagal jantung. Data ini dikumpulkan selama periode pemantauan pasien-pasien tersebut. Setiap profil pasien dalam dataset ini dilengkapi dengan 13 fitur klinis yang mencerminkan kondisi kesehatan mereka. Di bawah ini, saya akan menjelaskan deskripsi dari dataset ini serta tujuan utamanya:</p>
+<p>Deskripsi Dataset:</p>
+<ol class="arabic">
+<li><p>Jumlah Sampel: Dataset ini berisi informasi dari 299 pasien yang mengalami gagal jantung.</p></li>
+<li><p>Fitur Klinis: Setiap pasien dalam dataset ini memiliki 13 fitur klinis yang mencakup berbagai aspek dari kesehatan mereka. Beberapa contoh fitur klinis yang mungkin termasuk dalam dataset ini adalah tekanan darah, kadar serum kreatinin, kadar serum natrium, kadar serum kalium, ejection fraction (fraksi ejeksi), jenis kelamin pasien, dan lain sebagainya.</p></li>
+<li><p>Tujuan Dataset: Dataset ini memiliki beberapa tujuan utama, antara lain:
+a. Analisis dan Penelitian Kesehatan: Data ini dapat digunakan untuk menganalisis faktor-faktor risiko dan prediksi gagal jantung, serta untuk memahami hubungan antara berbagai fitur klinis dan kondisi pasien.</p>
+<p>b. Pengembangan Model Prediktif: Dataset ini dapat digunakan untuk mengembangkan model prediktif yang dapat memprediksi kemungkinan terjadinya gagal jantung pada pasien berdasarkan fitur-fitur klinis mereka. Hal ini dapat membantu tenaga medis dalam melakukan tindakan pencegahan yang lebih tepat waktu.</p>
+</li>
+</ol>
+<p>Tujuan utama dari dataset ini adalah meningkatkan pemahaman tentang gagal jantung, membantu dalam pengembangan metode prediktif, serta mendukung penelitian dan pengembangan terkait kesehatan jantung. Data ini menjadi dasar penting untuk menjalankan berbagai analisis dan penelitian dalam upaya untuk meningkatkan diagnosis, perawatan, dan pencegahan penyakit gagal jantung.</p>
+<p>Fitur-fitur klinis dalam dataset “Heart Failure Clinical Records” adalah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p><strong>Usia (age)</strong>: Ini adalah usia pasien dalam tahun. Fitur ini memberikan informasi tentang berapa usia pasien yang mengalami gagal jantung. Usia seringkali menjadi faktor penting dalam menilai risiko dan prognosis penyakit jantung.</p></li>
+<li><p><strong>Anemia (anaemia)</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien mengalami penurunan jumlah sel darah merah atau kadar hemoglobin. Nilai “true” menunjukkan kehadiran anemia, sementara “false” menunjukkan ketiadaan anemia.</p></li>
+<li><p><strong>Kreatinin Fosfokinase (CPK)</strong>: Ini adalah tingkat enzim CPK dalam darah, diukur dalam mikrogram per liter (mcg/L). Tingkat CPK dalam darah dapat memberikan indikasi adanya kerusakan otot atau jaringan jantung. Ini adalah indikator penting dalam penilaian kondisi jantung.</p></li>
+<li><p><strong>Diabetes</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien menderita diabetes atau tidak. Nilai “true” menunjukkan keberadaan diabetes, sementara “false” menunjukkan ketiadaan diabetes. Diabetes merupakan faktor risiko yang signifikan dalam perkembangan penyakit jantung.</p></li>
+<li><p><strong>Fraksi Ejeksi (Ejection Fraction)</strong>: Ini adalah persentase darah yang meninggalkan jantung pada setiap kontraksi. Fraksi ejeksi ini dinyatakan dalam persentase. Ini adalah ukuran penting dalam menilai kemampuan jantung untuk memompa darah dan dapat memberikan informasi tentang fungsi jantung.</p></li>
+<li><p><strong>Tekanan Darah Tinggi (High Blood Pressure)</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien memiliki hipertensi atau tidak. Nilai “true” menunjukkan keberadaan tekanan darah tinggi, sementara “false” menunjukkan ketiadaan tekanan darah tinggi. Tekanan darah tinggi adalah faktor risiko utama untuk penyakit jantung.</p></li>
+<li><p><strong>Platelet (platelets)</strong>: Ini adalah jumlah platelet dalam darah, diukur dalam ribu platelet per mililiter (kiloplatelets/mL). Platelet adalah sel darah yang berperan dalam pembekuan darah. Nilai platelet dalam darah dapat memberikan informasi tentang kemampuan darah untuk membeku.</p></li>
+<li><p><strong>Jenis Kelamin (Sex)</strong>: Ini adalah fitur biner yang menunjukkan jenis kelamin pasien, yaitu perempuan (woman) atau laki-laki (man). Informasi ini dapat digunakan untuk mengevaluasi perbedaan jenis kelamin dalam insiden gagal jantung.</p></li>
+<li><p><strong>Kreatinin Serum (Serum Creatinine)</strong>: Ini adalah tingkat kreatinin serum dalam darah, diukur dalam miligram per desiliter (mg/dL). Kreatinin adalah produk sisa metabolisme yang dapat memberikan informasi tentang fungsi ginjal. Tingkat kreatinin serum yang tinggi dapat menunjukkan masalah ginjal yang dapat mempengaruhi kondisi jantung.</p></li>
+<li><p><strong>Natrium Serum (Serum Sodium)</strong>: Ini adalah tingkat natrium serum dalam darah, diukur dalam miliequivalents per liter (mEq/L). Natrium adalah elektrolit penting dalam tubuh dan tingkat natrium serum dapat memberikan informasi tentang keseimbangan elektrolit yang dapat mempengaruhi fungsi jantung.</p></li>
+<li><p><strong>Merokok (Smoking)</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien merokok atau tidak. Nilai “true” menunjukkan kebiasaan merokok, sementara “false” menunjukkan ketiadaan kebiasaan merokok. Merokok adalah faktor risiko yang signifikan dalam perkembangan penyakit jantung.</p></li>
+<li><p><strong>Waktu (Time)</strong>: Ini adalah periode pemantauan atau follow-up pasien dalam satuan hari (days). Fitur ini mengukur lamanya pasien dipantau dalam penelitian. Ini adalah informasi penting dalam analisis klinis dan penelitian lanjutan.</p></li>
+<li><p><strong>Kejadian Kematian (Death Event)</strong>: Fitur target “death event” adalah sebuah fitur yang digunakan untuk menunjukkan apakah pasien mengalami kematian selama periode pemantauan atau tidak. Fitur ini bersifat boolean, yang berarti nilainya hanya dapat berupa dua kemungkinan: True (benar) atau False (salah).
+Jika “death event” memiliki nilai True, ini berarti bahwa pasien tersebut mengalami kematian selama periode pemantauan yang dicatat dalam dataset. Sebaliknya, jika “death event” memiliki nilai False, maka ini menunjukkan bahwa pasien tersebut masih hidup atau tidak mengalami kematian selama periode tersebut.</p></li>
+</ol>
+</section>
+<section id="mencari-model-terbaik-menggunakan-pycaret">
+<h2>Mencari Model Terbaik Menggunakan Pycaret<a class="headerlink" href="#mencari-model-terbaik-menggunakan-pycaret" title="Permalink to this heading">#</a></h2>
+<p>Pycaret adalah library Python yang menyederhanakan proses pengembangan model machine learning. Dengan fitur otomatis seperti setup data, pemilihan model, optimasi hyperparameter, dan visualisasi hasil, Pycaret memungkinkan pengguna untuk fokus pada inti pemodelan tanpa menulis banyak kode. Berikut implementasi pycaret untuk mencari model terbaik untuk memprediksi resiko gagal jantung pada pasien:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Langkah 1: Baca data dari file CSV</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/whintaaa/datapsd/main/heart_failure_clinical_records_dataset.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="c1"># Print the column names to identify the correct target variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Pilih kolom-kolom yang perlu dinormalisasi</span>
+<span class="n">numerical_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;creatinine_phosphokinase&#39;</span><span class="p">,</span> <span class="s1">&#39;ejection_fraction&#39;</span><span class="p">,</span> <span class="s1">&#39;platelets&#39;</span><span class="p">,</span> <span class="s1">&#39;serum_creatinine&#39;</span><span class="p">,</span> <span class="s1">&#39;serum_sodium&#39;</span><span class="p">]</span>
+
+<span class="c1"># Langkah 3: Split data menjadi fitur (X) dan target (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DEATH_EVENT&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DEATH_EVENT&#39;</span><span class="p">]</span>
+
+<span class="c1"># Inisialisasi ekperimen PyCaret</span>
+<span class="n">exp</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="s1">&#39;DEATH_EVENT&#39;</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">normalize_method</span><span class="o">=</span><span class="s1">&#39;zscore&#39;</span><span class="p">,</span> <span class="n">numeric_features</span><span class="o">=</span><span class="n">numerical_columns</span><span class="p">)</span>
+
+<span class="c1"># Bandingkan model dan cari yang terbaik</span>
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">compare_models</span><span class="p">()</span>
+
+<span class="n">best_model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-1-8d7173f66650&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Langkah 1: Baca data dari file CSV</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/whintaaa/datapsd/main/heart_failure_clinical_records_dataset.csv&quot;</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pycaret&#39;
+
+<span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NOTE</span>: If your import is failing due to a missing package, you can
+<span class="n">manually</span> <span class="n">install</span> <span class="n">dependencies</span> <span class="n">using</span> <span class="n">either</span> <span class="o">!</span>pip<span class="w"> </span>or<span class="w"> </span>!apt.
+
+<span class="n">To</span> <span class="n">view</span> <span class="n">examples</span> <span class="n">of</span> <span class="n">installing</span> <span class="n">some</span> <span class="n">common</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">click</span> <span class="n">the</span>
+<span class="s2">&quot;Open Examples&quot;</span> <span class="n">button</span> <span class="n">below</span><span class="o">.</span>
+<span class="gt">---------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menyimpan-model-terbaik-menggunakan-pycaret">
+<h2>Menyimpan Model terbaik Menggunakan Pycaret<a class="headerlink" href="#menyimpan-model-terbaik-menggunakan-pycaret" title="Permalink to this heading">#</a></h2>
+<p>Light Gradient Boosting Machine (LGBM) adalah algoritma machine learning yang termasuk dalam keluarga algoritma Boosting, khususnya Gradient Boosting. Algoritma ini dikembangkan oleh Microsoft dan dikenal karena kecepatan dan efisiensinya dalam menangani dataset besar. Berikut adalah penjelasan singkat tentang Light GBM dan cara kerjanya:</p>
+<section id="cara-kerja-light-gradient-boosting-machine-lgbm">
+<h3>Cara Kerja Light Gradient Boosting Machine (LGBM):<a class="headerlink" href="#cara-kerja-light-gradient-boosting-machine-lgbm" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Pohon Keputusan (Decision Trees):</strong> LGBM membangun model prediktif dengan menggabungkan beberapa pohon keputusan. Setiap pohon keputusan dibangun secara berurutan, dengan setiap pohon berusaha untuk memperbaiki kesalahan prediksi yang dihasilkan oleh pohon sebelumnya.</p></li>
+<li><p><strong>Boosting:</strong> LGBM menggunakan konsep Boosting, di mana setiap pohon keputusan ditraining untuk memperbaiki kesalahan prediksi model keseluruhan. Pohon-pohon tersebut diterapkan secara berurutan, dan setiap pohon memberikan “bobot” pada kesalahan yang dibuat oleh pohon sebelumnya.</p></li>
+<li><p><strong>Gradient Boosting:</strong> Konsep dasar Gradient Boosting adalah meminimalkan gradien (perbedaan) antara prediksi aktual dan prediksi model pada setiap iterasi. Ini dilakukan dengan menyesuaikan parameter model pada setiap iterasi berdasarkan gradien fungsi kerugian (loss function).</p></li>
+<li><p><strong>Leaf-wise Growth:</strong> Salah satu fitur utama LGBM adalah penggunaan pertumbuhan daun (leaf-wise growth) alih-alih level-wise growth yang digunakan oleh banyak implementasi Gradient Boosting lainnya. Pendekatan ini membangun pohon dengan menambahkan daun (leaf) yang memberikan penurunan fungsi kerugian yang paling signifikan. Hal ini meningkatkan efisiensi karena fokus pada daun yang paling informatif.</p></li>
+<li><p><strong>Pemrosesan Paralel dan Distribusi:</strong> LGBM dapat melakukan pemrosesan secara paralel dan terdistribusi, memungkinkan penggunaan sumber daya komputasi dengan lebih efisien dan mempercepat proses pelatihan model.</p></li>
+</ol>
+</section>
+<section id="prediksi-dengan-lgbm">
+<h3>Prediksi dengan LGBM:<a class="headerlink" href="#prediksi-dengan-lgbm" title="Permalink to this heading">#</a></h3>
+<p>Setelah model LGBM dilatih, prediksi untuk suatu instance baru dihasilkan dengan menjalankan instance tersebut melalui setiap pohon keputusan yang telah dibangun. Hasil prediksi dari setiap pohon dijumlahkan dan diakumulasi untuk memberikan prediksi akhir.</p>
+<p>Karena efisiensinya dalam menangani dataset besar dan kemampuannya untuk bekerja dengan fitur kategorikal, LGBM sering digunakan dalam berbagai tugas seperti klasifikasi, regresi, dan perankingan.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;lightgbm&#39;</span><span class="p">)</span>
+
+<span class="c1"># Simpan model terbaik ke dalam file pickle</span>
+<span class="n">model_filename</span> <span class="o">=</span> <span class="s1">&#39;best_model.pkl&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">best_model</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+<span class="c1"># Load model dari file pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">loaded_model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"></div><div class="output text_html"><style type="text/css">
+#T_196f4_row10_col0, #T_196f4_row10_col1, #T_196f4_row10_col2, #T_196f4_row10_col3, #T_196f4_row10_col4, #T_196f4_row10_col5, #T_196f4_row10_col6 {
+  background: yellow;
+}
+</style>
+<table id="T_196f4" class="dataframe">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_196f4_level0_col0" class="col_heading level0 col0" >Accuracy</th>
+      <th id="T_196f4_level0_col1" class="col_heading level0 col1" >AUC</th>
+      <th id="T_196f4_level0_col2" class="col_heading level0 col2" >Recall</th>
+      <th id="T_196f4_level0_col3" class="col_heading level0 col3" >Prec.</th>
+      <th id="T_196f4_level0_col4" class="col_heading level0 col4" >F1</th>
+      <th id="T_196f4_level0_col5" class="col_heading level0 col5" >Kappa</th>
+      <th id="T_196f4_level0_col6" class="col_heading level0 col6" >MCC</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >Fold</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+      <th class="blank col2" >&nbsp;</th>
+      <th class="blank col3" >&nbsp;</th>
+      <th class="blank col4" >&nbsp;</th>
+      <th class="blank col5" >&nbsp;</th>
+      <th class="blank col6" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_196f4_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_196f4_row0_col0" class="data row0 col0" >0.9524</td>
+      <td id="T_196f4_row0_col1" class="data row0 col1" >0.9889</td>
+      <td id="T_196f4_row0_col2" class="data row0 col2" >0.8333</td>
+      <td id="T_196f4_row0_col3" class="data row0 col3" >1.0000</td>
+      <td id="T_196f4_row0_col4" class="data row0 col4" >0.9091</td>
+      <td id="T_196f4_row0_col5" class="data row0 col5" >0.8772</td>
+      <td id="T_196f4_row0_col6" class="data row0 col6" >0.8839</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_196f4_row1_col0" class="data row1 col0" >0.8095</td>
+      <td id="T_196f4_row1_col1" class="data row1 col1" >0.9444</td>
+      <td id="T_196f4_row1_col2" class="data row1 col2" >0.5000</td>
+      <td id="T_196f4_row1_col3" class="data row1 col3" >0.7500</td>
+      <td id="T_196f4_row1_col4" class="data row1 col4" >0.6000</td>
+      <td id="T_196f4_row1_col5" class="data row1 col5" >0.4815</td>
+      <td id="T_196f4_row1_col6" class="data row1 col6" >0.4985</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_196f4_row2_col0" class="data row2 col0" >0.9048</td>
+      <td id="T_196f4_row2_col1" class="data row2 col1" >0.8673</td>
+      <td id="T_196f4_row2_col2" class="data row2 col2" >0.8571</td>
+      <td id="T_196f4_row2_col3" class="data row2 col3" >0.8571</td>
+      <td id="T_196f4_row2_col4" class="data row2 col4" >0.8571</td>
+      <td id="T_196f4_row2_col5" class="data row2 col5" >0.7857</td>
+      <td id="T_196f4_row2_col6" class="data row2 col6" >0.7857</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_196f4_row3_col0" class="data row3 col0" >0.8095</td>
+      <td id="T_196f4_row3_col1" class="data row3 col1" >0.8469</td>
+      <td id="T_196f4_row3_col2" class="data row3 col2" >0.8571</td>
+      <td id="T_196f4_row3_col3" class="data row3 col3" >0.6667</td>
+      <td id="T_196f4_row3_col4" class="data row3 col4" >0.7500</td>
+      <td id="T_196f4_row3_col5" class="data row3 col5" >0.6000</td>
+      <td id="T_196f4_row3_col6" class="data row3 col6" >0.6124</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_196f4_row4_col0" class="data row4 col0" >0.7619</td>
+      <td id="T_196f4_row4_col1" class="data row4 col1" >0.8469</td>
+      <td id="T_196f4_row4_col2" class="data row4 col2" >0.5714</td>
+      <td id="T_196f4_row4_col3" class="data row4 col3" >0.6667</td>
+      <td id="T_196f4_row4_col4" class="data row4 col4" >0.6154</td>
+      <td id="T_196f4_row4_col5" class="data row4 col5" >0.4444</td>
+      <td id="T_196f4_row4_col6" class="data row4 col6" >0.4472</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_196f4_row5_col0" class="data row5 col0" >0.9524</td>
+      <td id="T_196f4_row5_col1" class="data row5 col1" >1.0000</td>
+      <td id="T_196f4_row5_col2" class="data row5 col2" >1.0000</td>
+      <td id="T_196f4_row5_col3" class="data row5 col3" >0.8750</td>
+      <td id="T_196f4_row5_col4" class="data row5 col4" >0.9333</td>
+      <td id="T_196f4_row5_col5" class="data row5 col5" >0.8966</td>
+      <td id="T_196f4_row5_col6" class="data row5 col6" >0.9014</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_196f4_row6_col0" class="data row6 col0" >0.8095</td>
+      <td id="T_196f4_row6_col1" class="data row6 col1" >0.7959</td>
+      <td id="T_196f4_row6_col2" class="data row6 col2" >0.5714</td>
+      <td id="T_196f4_row6_col3" class="data row6 col3" >0.8000</td>
+      <td id="T_196f4_row6_col4" class="data row6 col4" >0.6667</td>
+      <td id="T_196f4_row6_col5" class="data row6 col5" >0.5385</td>
+      <td id="T_196f4_row6_col6" class="data row6 col6" >0.5534</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_196f4_row7_col0" class="data row7 col0" >0.8095</td>
+      <td id="T_196f4_row7_col1" class="data row7 col1" >0.9286</td>
+      <td id="T_196f4_row7_col2" class="data row7 col2" >0.7143</td>
+      <td id="T_196f4_row7_col3" class="data row7 col3" >0.7143</td>
+      <td id="T_196f4_row7_col4" class="data row7 col4" >0.7143</td>
+      <td id="T_196f4_row7_col5" class="data row7 col5" >0.5714</td>
+      <td id="T_196f4_row7_col6" class="data row7 col6" >0.5714</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_196f4_row8_col0" class="data row8 col0" >1.0000</td>
+      <td id="T_196f4_row8_col1" class="data row8 col1" >1.0000</td>
+      <td id="T_196f4_row8_col2" class="data row8 col2" >1.0000</td>
+      <td id="T_196f4_row8_col3" class="data row8 col3" >1.0000</td>
+      <td id="T_196f4_row8_col4" class="data row8 col4" >1.0000</td>
+      <td id="T_196f4_row8_col5" class="data row8 col5" >1.0000</td>
+      <td id="T_196f4_row8_col6" class="data row8 col6" >1.0000</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_196f4_row9_col0" class="data row9 col0" >0.7500</td>
+      <td id="T_196f4_row9_col1" class="data row9 col1" >0.7619</td>
+      <td id="T_196f4_row9_col2" class="data row9 col2" >0.6667</td>
+      <td id="T_196f4_row9_col3" class="data row9 col3" >0.5714</td>
+      <td id="T_196f4_row9_col4" class="data row9 col4" >0.6154</td>
+      <td id="T_196f4_row9_col5" class="data row9 col5" >0.4318</td>
+      <td id="T_196f4_row9_col6" class="data row9 col6" >0.4346</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row10" class="row_heading level0 row10" >Mean</th>
+      <td id="T_196f4_row10_col0" class="data row10 col0" >0.8560</td>
+      <td id="T_196f4_row10_col1" class="data row10 col1" >0.8981</td>
+      <td id="T_196f4_row10_col2" class="data row10 col2" >0.7571</td>
+      <td id="T_196f4_row10_col3" class="data row10 col3" >0.7901</td>
+      <td id="T_196f4_row10_col4" class="data row10 col4" >0.7661</td>
+      <td id="T_196f4_row10_col5" class="data row10 col5" >0.6627</td>
+      <td id="T_196f4_row10_col6" class="data row10 col6" >0.6689</td>
+    </tr>
+    <tr>
+      <th id="T_196f4_level0_row11" class="row_heading level0 row11" >Std</th>
+      <td id="T_196f4_row11_col0" class="data row11 col0" >0.0839</td>
+      <td id="T_196f4_row11_col1" class="data row11 col1" >0.0820</td>
+      <td id="T_196f4_row11_col2" class="data row11 col2" >0.1700</td>
+      <td id="T_196f4_row11_col3" class="data row11 col3" >0.1362</td>
+      <td id="T_196f4_row11_col4" class="data row11 col4" >0.1404</td>
+      <td id="T_196f4_row11_col5" class="data row11 col5" >0.1978</td>
+      <td id="T_196f4_row11_col6" class="data row11 col6" >0.1956</td>
+    </tr>
+  </tbody>
+</table>
+</div><script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "ab47a9b374184fa280da64791edd0607"}</script><div class="output text_html"></div></div>
+</div>
+</section>
+</section>
+<section id="prediksi-death-event-menggunakan-light-gradient-boosting-machine-lgbm-dengan-data-baru">
+<h2>Prediksi Death_Event Menggunakan Light Gradient Boosting Machine (LGBM) dengan Data Baru<a class="headerlink" href="#prediksi-death-event-menggunakan-light-gradient-boosting-machine-lgbm-dengan-data-baru" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membaca data baru yang akan diprediksi</span>
+<span class="n">age</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Age: &quot;</span><span class="p">))</span>
+<span class="n">anaemia</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">creatinine_phosphokinase</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Creatinine Phosphokinase: &quot;</span><span class="p">))</span>
+<span class="n">diabetes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">ejection_fraction</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Ejection Fraction: &quot;</span><span class="p">))</span>
+<span class="n">high_blood_pressure</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai High Blood Pressure (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">platelets</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Platelets: &quot;</span><span class="p">))</span>
+<span class="n">serum_creatinine</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Serum Creatinine: &quot;</span><span class="p">))</span>
+<span class="n">serum_sodium</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Serum Sodium: &quot;</span><span class="p">))</span>
+<span class="n">sex</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Sex (0 untuk Perempuan, 1 untuk Laki-laki): &quot;</span><span class="p">))</span>
+<span class="n">smoking</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Smoking (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">time</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Time: &quot;</span><span class="p">))</span>
+
+<span class="c1"># Membuat data baru untuk prediksi</span>
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">age</span><span class="p">,</span> <span class="n">anaemia</span><span class="p">,</span> <span class="n">creatinine_phosphokinase</span><span class="p">,</span> <span class="n">diabetes</span><span class="p">,</span> <span class="n">ejection_fraction</span><span class="p">,</span> <span class="n">high_blood_pressure</span><span class="p">,</span> <span class="n">platelets</span><span class="p">,</span> <span class="n">serum_creatinine</span><span class="p">,</span> <span class="n">serum_sodium</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">smoking</span><span class="p">,</span> <span class="n">time</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Memuat model terbaik dari file pickle</span>
+<span class="n">loaded_model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;best_model&#39;</span><span class="p">)</span>
+
+<span class="c1"># Melakukan prediksi pada data baru</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">predict_model</span><span class="p">(</span><span class="n">loaded_model</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">new_data</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan hasil prediksi</span>
+<span class="k">if</span> <span class="n">predictions</span><span class="p">[</span><span class="s1">&#39;prediction_label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Prediksi: Pasien berisiko mengalami DEATH_EVENT&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Prediksi: Pasien tidak berisiko mengalami DEATH_EVENT&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Masukkan nilai Age: 75
+Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): 0
+Masukkan nilai Creatinine Phosphokinase: 582
+Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): 0
+Masukkan nilai Ejection Fraction: 20
+Masukkan nilai High Blood Pressure (0 untuk Tidak, 1 untuk Ya): 1
+Masukkan nilai Platelets: 265000
+Masukkan nilai Serum Creatinine: 1.9
+Masukkan nilai Serum Sodium: 130
+Masukkan nilai Sex (0 untuk Perempuan, 1 untuk Laki-laki): 1
+Masukkan nilai Smoking (0 untuk Tidak, 1 untuk Ya): 0
+Masukkan nilai Time: 4
+Transformation Pipeline and Model Successfully Loaded
+</pre></div>
+</div>
+<div class="output text_html"></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hasil Prediksi: Pasien berisiko mengalami DEATH_EVENT
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="210411100047_PSD_prediksi%20gagal%20jantung.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan beberapa Model.</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-model-terbaik-menggunakan-pycaret">Mencari Model Terbaik Menggunakan Pycaret</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-terbaik-menggunakan-pycaret">Menyimpan Model terbaik Menggunakan Pycaret</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-light-gradient-boosting-machine-lgbm">Cara Kerja Light Gradient Boosting Machine (LGBM):</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-dengan-lgbm">Prediksi dengan LGBM:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-death-event-menggunakan-light-gradient-boosting-machine-lgbm-dengan-data-baru">Prediksi Death_Event Menggunakan Light Gradient Boosting Machine (LGBM) dengan Data Baru</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Whinta Virginia Putri
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

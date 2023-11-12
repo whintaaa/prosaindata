@@ -1,0 +1,3739 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan beberapa Model. &#8212; Proyek Sains Data</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '210411100047_PSD_prediksi gagal jantung';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret." href="210411100047_PSD_prediksi%20pycaret.html" />
+    <link rel="prev" title="Analisis dan Prediksi pada Data Audio Emosi" href="210411100047_PSD_Prediksi-Audio-Emosi.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Proyek Sains Data - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Proyek Sains Data - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Proyek Sains Data
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="210411100047_PSD_Prediksi-Audio-Emosi.html">Analisis dan Prediksi pada Data Audio Emosi</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan beberapa Model.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="210411100047_PSD_prediksi%20pycaret.html">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/docs/210411100047_PSD_prediksi gagal jantung.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2F210411100047_PSD_prediksi gagal jantung.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/210411100047_PSD_prediksi gagal jantung.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan beberapa Model.</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm">SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-data-baru-dengan-model-trebaik-yaitu-logistic-regression">Prediksi Data Baru dengan model trebaik yaitu Logistic Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-logistic-regression">Cara Kerja Logistic Regression:</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-dan-prediksi-pada-dataset-heart-failure-clinical-records-menggunakan-beberapa-model">
+<h1>Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan beberapa Model.<a class="headerlink" href="#analisis-dan-prediksi-pada-dataset-heart-failure-clinical-records-menggunakan-beberapa-model" title="Permalink to this heading">#</a></h1>
+<p>Nama: Whinta Virginia Putri</p>
+<p>NIM: 210411100047</p>
+<p>Proyek Sain Data</p>
+<section id="deskripsi-dataset">
+<h2>Deskripsi Dataset<a class="headerlink" href="#deskripsi-dataset" title="Permalink to this heading">#</a></h2>
+<p>Dataset “Heart failure clinical records” merupakan kumpulan data yang berisi catatan medis dari 299 pasien yang mengalami gagal jantung. Data ini dikumpulkan selama periode pemantauan pasien-pasien tersebut. Setiap profil pasien dalam dataset ini dilengkapi dengan 13 fitur klinis yang mencerminkan kondisi kesehatan mereka. Di bawah ini, saya akan menjelaskan deskripsi dari dataset ini serta tujuan utamanya:</p>
+<p>Deskripsi Dataset:</p>
+<ol class="arabic">
+<li><p>Jumlah Sampel: Dataset ini berisi informasi dari 299 pasien yang mengalami gagal jantung.</p></li>
+<li><p>Fitur Klinis: Setiap pasien dalam dataset ini memiliki 13 fitur klinis yang mencakup berbagai aspek dari kesehatan mereka. Beberapa contoh fitur klinis yang mungkin termasuk dalam dataset ini adalah tekanan darah, kadar serum kreatinin, kadar serum natrium, kadar serum kalium, ejection fraction (fraksi ejeksi), jenis kelamin pasien, dan lain sebagainya.</p></li>
+<li><p>Tujuan Dataset: Dataset ini memiliki beberapa tujuan utama, antara lain:
+a. Analisis dan Penelitian Kesehatan: Data ini dapat digunakan untuk menganalisis faktor-faktor risiko dan prediksi gagal jantung, serta untuk memahami hubungan antara berbagai fitur klinis dan kondisi pasien.</p>
+<p>b. Pengembangan Model Prediktif: Dataset ini dapat digunakan untuk mengembangkan model prediktif yang dapat memprediksi kemungkinan terjadinya gagal jantung pada pasien berdasarkan fitur-fitur klinis mereka. Hal ini dapat membantu tenaga medis dalam melakukan tindakan pencegahan yang lebih tepat waktu.</p>
+</li>
+</ol>
+<p>Tujuan utama dari dataset ini adalah meningkatkan pemahaman tentang gagal jantung, membantu dalam pengembangan metode prediktif, serta mendukung penelitian dan pengembangan terkait kesehatan jantung. Data ini menjadi dasar penting untuk menjalankan berbagai analisis dan penelitian dalam upaya untuk meningkatkan diagnosis, perawatan, dan pencegahan penyakit gagal jantung.</p>
+<p>Fitur-fitur klinis dalam dataset “Heart Failure Clinical Records” adalah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p><strong>Usia (age)</strong>: Ini adalah usia pasien dalam tahun. Fitur ini memberikan informasi tentang berapa usia pasien yang mengalami gagal jantung. Usia seringkali menjadi faktor penting dalam menilai risiko dan prognosis penyakit jantung.</p></li>
+<li><p><strong>Anemia (anaemia)</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien mengalami penurunan jumlah sel darah merah atau kadar hemoglobin. Nilai “true” menunjukkan kehadiran anemia, sementara “false” menunjukkan ketiadaan anemia.</p></li>
+<li><p><strong>Kreatinin Fosfokinase (CPK)</strong>: Ini adalah tingkat enzim CPK dalam darah, diukur dalam mikrogram per liter (mcg/L). Tingkat CPK dalam darah dapat memberikan indikasi adanya kerusakan otot atau jaringan jantung. Ini adalah indikator penting dalam penilaian kondisi jantung.</p></li>
+<li><p><strong>Diabetes</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien menderita diabetes atau tidak. Nilai “true” menunjukkan keberadaan diabetes, sementara “false” menunjukkan ketiadaan diabetes. Diabetes merupakan faktor risiko yang signifikan dalam perkembangan penyakit jantung.</p></li>
+<li><p><strong>Fraksi Ejeksi (Ejection Fraction)</strong>: Ini adalah persentase darah yang meninggalkan jantung pada setiap kontraksi. Fraksi ejeksi ini dinyatakan dalam persentase. Ini adalah ukuran penting dalam menilai kemampuan jantung untuk memompa darah dan dapat memberikan informasi tentang fungsi jantung.</p></li>
+<li><p><strong>Tekanan Darah Tinggi (High Blood Pressure)</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien memiliki hipertensi atau tidak. Nilai “true” menunjukkan keberadaan tekanan darah tinggi, sementara “false” menunjukkan ketiadaan tekanan darah tinggi. Tekanan darah tinggi adalah faktor risiko utama untuk penyakit jantung.</p></li>
+<li><p><strong>Platelet (platelets)</strong>: Ini adalah jumlah platelet dalam darah, diukur dalam ribu platelet per mililiter (kiloplatelets/mL). Platelet adalah sel darah yang berperan dalam pembekuan darah. Nilai platelet dalam darah dapat memberikan informasi tentang kemampuan darah untuk membeku.</p></li>
+<li><p><strong>Jenis Kelamin (Sex)</strong>: Ini adalah fitur biner yang menunjukkan jenis kelamin pasien, yaitu perempuan (woman) atau laki-laki (man). Informasi ini dapat digunakan untuk mengevaluasi perbedaan jenis kelamin dalam insiden gagal jantung.</p></li>
+<li><p><strong>Kreatinin Serum (Serum Creatinine)</strong>: Ini adalah tingkat kreatinin serum dalam darah, diukur dalam miligram per desiliter (mg/dL). Kreatinin adalah produk sisa metabolisme yang dapat memberikan informasi tentang fungsi ginjal. Tingkat kreatinin serum yang tinggi dapat menunjukkan masalah ginjal yang dapat mempengaruhi kondisi jantung.</p></li>
+<li><p><strong>Natrium Serum (Serum Sodium)</strong>: Ini adalah tingkat natrium serum dalam darah, diukur dalam miliequivalents per liter (mEq/L). Natrium adalah elektrolit penting dalam tubuh dan tingkat natrium serum dapat memberikan informasi tentang keseimbangan elektrolit yang dapat mempengaruhi fungsi jantung.</p></li>
+<li><p><strong>Merokok (Smoking)</strong>: Ini adalah fitur biner yang menunjukkan apakah pasien merokok atau tidak. Nilai “true” menunjukkan kebiasaan merokok, sementara “false” menunjukkan ketiadaan kebiasaan merokok. Merokok adalah faktor risiko yang signifikan dalam perkembangan penyakit jantung.</p></li>
+<li><p><strong>Waktu (Time)</strong>: Ini adalah periode pemantauan atau follow-up pasien dalam satuan hari (days). Fitur ini mengukur lamanya pasien dipantau dalam penelitian. Ini adalah informasi penting dalam analisis klinis dan penelitian lanjutan.</p></li>
+<li><p><strong>Kejadian Kematian (Death Event)</strong>: Fitur target “death event” adalah sebuah fitur yang digunakan untuk menunjukkan apakah pasien mengalami kematian selama periode pemantauan atau tidak. Fitur ini bersifat boolean, yang berarti nilainya hanya dapat berupa dua kemungkinan: True (benar) atau False (salah).
+Jika “death event” memiliki nilai True, ini berarti bahwa pasien tersebut mengalami kematian selama periode pemantauan yang dicatat dalam dataset. Sebaliknya, jika “death event” memiliki nilai False, maka ini menunjukkan bahwa pasien tersebut masih hidup atau tidak mengalami kematian selama periode tersebut.</p></li>
+</ol>
+</section>
+<section id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">learning_curve</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Langkah 1: Baca data dari file CSV</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/whintaaa/datapsd/main/heart_failure_clinical_records_dataset.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-d4af1edd-1fa7-414c-b3c5-98e8f479e152" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>anaemia</th>
+      <th>creatinine_phosphokinase</th>
+      <th>diabetes</th>
+      <th>ejection_fraction</th>
+      <th>high_blood_pressure</th>
+      <th>platelets</th>
+      <th>serum_creatinine</th>
+      <th>serum_sodium</th>
+      <th>sex</th>
+      <th>smoking</th>
+      <th>time</th>
+      <th>DEATH_EVENT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>75.0</td>
+      <td>0</td>
+      <td>582</td>
+      <td>0</td>
+      <td>20</td>
+      <td>1</td>
+      <td>265000.00</td>
+      <td>1.9</td>
+      <td>130</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>55.0</td>
+      <td>0</td>
+      <td>7861</td>
+      <td>0</td>
+      <td>38</td>
+      <td>0</td>
+      <td>263358.03</td>
+      <td>1.1</td>
+      <td>136</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>65.0</td>
+      <td>0</td>
+      <td>146</td>
+      <td>0</td>
+      <td>20</td>
+      <td>0</td>
+      <td>162000.00</td>
+      <td>1.3</td>
+      <td>129</td>
+      <td>1</td>
+      <td>1</td>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>50.0</td>
+      <td>1</td>
+      <td>111</td>
+      <td>0</td>
+      <td>20</td>
+      <td>0</td>
+      <td>210000.00</td>
+      <td>1.9</td>
+      <td>137</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>65.0</td>
+      <td>1</td>
+      <td>160</td>
+      <td>1</td>
+      <td>20</td>
+      <td>0</td>
+      <td>327000.00</td>
+      <td>2.7</td>
+      <td>116</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>294</th>
+      <td>62.0</td>
+      <td>0</td>
+      <td>61</td>
+      <td>1</td>
+      <td>38</td>
+      <td>1</td>
+      <td>155000.00</td>
+      <td>1.1</td>
+      <td>143</td>
+      <td>1</td>
+      <td>1</td>
+      <td>270</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>295</th>
+      <td>55.0</td>
+      <td>0</td>
+      <td>1820</td>
+      <td>0</td>
+      <td>38</td>
+      <td>0</td>
+      <td>270000.00</td>
+      <td>1.2</td>
+      <td>139</td>
+      <td>0</td>
+      <td>0</td>
+      <td>271</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>296</th>
+      <td>45.0</td>
+      <td>0</td>
+      <td>2060</td>
+      <td>1</td>
+      <td>60</td>
+      <td>0</td>
+      <td>742000.00</td>
+      <td>0.8</td>
+      <td>138</td>
+      <td>0</td>
+      <td>0</td>
+      <td>278</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>297</th>
+      <td>45.0</td>
+      <td>0</td>
+      <td>2413</td>
+      <td>0</td>
+      <td>38</td>
+      <td>0</td>
+      <td>140000.00</td>
+      <td>1.4</td>
+      <td>140</td>
+      <td>1</td>
+      <td>1</td>
+      <td>280</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>298</th>
+      <td>50.0</td>
+      <td>0</td>
+      <td>196</td>
+      <td>0</td>
+      <td>45</td>
+      <td>0</td>
+      <td>395000.00</td>
+      <td>1.6</td>
+      <td>136</td>
+      <td>1</td>
+      <td>1</td>
+      <td>285</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>299 rows × 13 columns</p>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-d4af1edd-1fa7-414c-b3c5-98e8f479e152')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-d4af1edd-1fa7-414c-b3c5-98e8f479e152 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-d4af1edd-1fa7-414c-b3c5-98e8f479e152');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="preprocessing">
+<h2>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h2>
+<p>Normalisasi dengan scaler adalah proses untuk mengubah nilai-nilai fitur dalam dataset sehingga memiliki skala yang seragam atau dibatasi ke dalam rentang tertentu. Skaler (scaler) adalah suatu metode atau algoritma yang digunakan untuk melakukan normalisasi. Normalisasi berguna ketika fitur-fitur dalam dataset memiliki rentang nilai yang berbeda-beda, sehingga dapat mempengaruhi performa beberapa algoritma machine learning.</p>
+<p>Secara singkat, normalisasi dengan scaler melibatkan dua langkah utama:</p>
+<ol class="arabic simple">
+<li><p><strong>Menghitung Statistik Fitur:</strong> Skaler menghitung statistik fitur, seperti mean (rata-rata) dan standar deviasi (deviasi standar), atau nilai minimum dan maksimum dari setiap fitur dalam dataset.</p></li>
+<li><p><strong>Transformasi Nilai Fitur:</strong> Skaler kemudian mengaplikasikan transformasi ke setiap nilai fitur dalam dataset berdasarkan statistik yang dihitung. Ini dapat melibatkan pengurangan rata-rata dan pembagian dengan standar deviasi, atau normalisasi ke dalam rentang tertentu, seperti 0 hingga 1.</p></li>
+</ol>
+<p>Contoh skaler yang digunakan adalah Standard Scaler. Normalisasi dengan scaler membantu algoritma machine learning bekerja lebih baik, terutama ketika algoritma tersebut sensitif terhadap perbedaan skala antar fitur dalam dataset.</p>
+<p>Pada normalisasi scaler ini hanya fitur numerik yang akan dinormalisasi:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pilih kolom-kolom yang perlu dinormalisasi</span>
+<span class="n">numerical_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;creatinine_phosphokinase&#39;</span><span class="p">,</span> <span class="s1">&#39;ejection_fraction&#39;</span><span class="p">,</span> <span class="s1">&#39;platelets&#39;</span><span class="p">,</span> <span class="s1">&#39;serum_creatinine&#39;</span><span class="p">,</span> <span class="s1">&#39;serum_sodium&#39;</span><span class="p">]</span>
+
+<span class="c1"># Langkah 3: Split data menjadi fitur (X) dan target (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;DEATH_EVENT&#39;</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DEATH_EVENT&#39;</span><span class="p">]</span>
+
+<span class="c1"># Langkah 8: Bagi data menjadi data latih dan data uji</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Langkah 4: Normalisasi data menggunakan StandardScaler pada data latih</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Salin data latih ke dataframe baru</span>
+<span class="n">X_train_scaled</span><span class="p">[</span><span class="n">numerical_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">[</span><span class="n">numerical_columns</span><span class="p">])</span>
+
+<span class="c1"># Langkah 5: Simpan objek scaler ke dalam file &quot;scaler.pkl&quot; menggunakan pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">scaler_file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">scaler_file</span><span class="p">)</span>
+
+<span class="c1"># Langkah 6: Load kembali scaler dari file &quot;scaler.pkl&quot; menggunakan pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">scaler_file</span><span class="p">:</span>
+    <span class="n">scalerr</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">scaler_file</span><span class="p">)</span>
+
+<span class="c1"># Langkah 7: Normalisasi data uji menggunakan scaler yang telah disimpan</span>
+<span class="n">X_test_scaler</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c1"># Salin data uji ke dataframe baru</span>
+<span class="n">X_test_scaler</span><span class="p">[</span><span class="n">numerical_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">scalerr</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">[</span><span class="n">numerical_columns</span><span class="p">])</span>
+
+<span class="c1"># Tampilkan hasil normalisasi data uji</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          age  anaemia  creatinine_phosphokinase  diabetes  ejection_fraction  \
+281  0.746627        0                  0.005203         0           0.149345   
+265 -0.923675        1                 -0.295341         0          -0.280697   
+164 -1.341250        0                  1.973552         1          -0.710740   
+9    1.581778        1                 -0.480535         0          -0.280697   
+77  -1.591796        0                 -0.502758         1           0.149345   
+
+     high_blood_pressure  platelets  serum_creatinine  serum_sodium  sex  \
+281                    0  -2.247433          1.322034     -0.094431    1   
+265                    0   1.058437         -0.490853      0.808330    1   
+164                    0   0.760803         -0.289421      0.582639    1   
+9                      1   1.334812          8.070001     -0.771501    1   
+77                     0  -0.270289         -0.188705      0.808330    1   
+
+     smoking  time  
+281        1   250  
+265        1   240  
+164        0   129  
+9          1    10  
+77         0    74  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modelling">
+<h2>Modelling<a class="headerlink" href="#modelling" title="Permalink to this heading">#</a></h2>
+<p>Ada beberapa model yang saya gunakan untuk mencari model dengan akurasi terbaik yang akan digunakan saat prediksi nantinya:</p>
+<section id="naive-bayes">
+<h3>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metode 1: Naive Bayes</span>
+<span class="n">naive_bayes_model</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">naive_bayes_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;naive_bayes_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">nb_model_file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">naive_bayes_model</span><span class="p">,</span> <span class="n">nb_model_file</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;naive_bayes_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">nb_model_file</span><span class="p">:</span>
+    <span class="n">loaded_nb_model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">nb_model_file</span><span class="p">)</span>
+<span class="n">y_pred_nb</span> <span class="o">=</span> <span class="n">loaded_nb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+<span class="n">accuracy_nb</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_nb</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi Naive Bayes:&quot;</span><span class="p">,</span> <span class="n">accuracy_nb</span><span class="p">)</span>
+<span class="c1"># Menampilkan target aktual dan prediksi dari model Naive Bayes dalam dua kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metode 1: Naive Bayes&quot;</span><span class="p">)</span>
+<span class="n">nb_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Prediksi Naive Bayes&#39;</span><span class="p">:</span> <span class="n">y_pred_nb</span><span class="p">})</span>
+<span class="n">nb_results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi Naive Bayes: 0.7
+Metode 1: Naive Bayes
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-a56e15b5-f982-4939-96ec-bc2f2ab7f064" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual Label</th>
+      <th>Prediksi Naive Bayes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>281</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a56e15b5-f982-4939-96ec-bc2f2ab7f064')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-a56e15b5-f982-4939-96ec-bc2f2ab7f064 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-a56e15b5-f982-4939-96ec-bc2f2ab7f064');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="decision-tree">
+<h3>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metode 2: Decision Tree</span>
+<span class="n">decision_tree_model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">decision_tree_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;decision_tree_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dt_model_file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">decision_tree_model</span><span class="p">,</span> <span class="n">dt_model_file</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;decision_tree_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">dt_model_file</span><span class="p">:</span>
+    <span class="n">loaded_dt_model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">dt_model_file</span><span class="p">)</span>
+<span class="n">y_pred_dt</span> <span class="o">=</span> <span class="n">loaded_dt_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+<span class="n">accuracy_dt</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi Decision Tree:&quot;</span><span class="p">,</span> <span class="n">accuracy_dt</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metode 2: Decision Tree&quot;</span><span class="p">)</span>
+<span class="n">dt_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Prediksi Decision Tree&#39;</span><span class="p">:</span> <span class="n">y_pred_dt</span><span class="p">})</span>
+<span class="n">dt_results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi Decision Tree: 0.65
+Metode 2: Decision Tree
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-14c210c2-7e82-409d-9a62-952d5a5090e8" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual Label</th>
+      <th>Prediksi Decision Tree</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>281</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-14c210c2-7e82-409d-9a62-952d5a5090e8')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-14c210c2-7e82-409d-9a62-952d5a5090e8 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-14c210c2-7e82-409d-9a62-952d5a5090e8');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="random-forest">
+<h3>Random Forest<a class="headerlink" href="#random-forest" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metode 3: Random Forest</span>
+<span class="n">random_forest_model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
+<span class="n">random_forest_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;random_forest_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rf_model_file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">random_forest_model</span><span class="p">,</span> <span class="n">rf_model_file</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;random_forest_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">rf_model_file</span><span class="p">:</span>
+    <span class="n">loaded_rf_model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">rf_model_file</span><span class="p">)</span>
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">loaded_rf_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+<span class="n">accuracy_rf</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi Random Forest:&quot;</span><span class="p">,</span> <span class="n">accuracy_rf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metode 3: Random Forest&quot;</span><span class="p">)</span>
+<span class="n">rf_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Prediksi Random Forest&#39;</span><span class="p">:</span> <span class="n">y_pred_rf</span><span class="p">})</span>
+<span class="n">rf_results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi Random Forest: 0.7333333333333333
+Metode 3: Random Forest
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-c255c580-44a3-4aa3-a917-e203cf20a75e" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual Label</th>
+      <th>Prediksi Random Forest</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>281</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-c255c580-44a3-4aa3-a917-e203cf20a75e')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-c255c580-44a3-4aa3-a917-e203cf20a75e button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-c255c580-44a3-4aa3-a917-e203cf20a75e');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="svm">
+<h3>SVM<a class="headerlink" href="#svm" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metode 4: SVM</span>
+<span class="n">svm_model</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">()</span>
+<span class="n">svm_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;svm_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">svm_model_file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">svm_model</span><span class="p">,</span> <span class="n">svm_model_file</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;svm_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">svm_model_file</span><span class="p">:</span>
+    <span class="n">loaded_svm_model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">svm_model_file</span><span class="p">)</span>
+<span class="n">y_pred_svm</span> <span class="o">=</span> <span class="n">loaded_svm_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+<span class="n">accuracy_svm</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_svm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi SVM:&quot;</span><span class="p">,</span> <span class="n">accuracy_svm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metode 4: SVM&quot;</span><span class="p">)</span>
+<span class="n">svm_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Prediksi SVM&#39;</span><span class="p">:</span> <span class="n">y_pred_svm</span><span class="p">})</span>
+<span class="n">svm_results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi SVM: 0.7
+Metode 4: SVM
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-b0427de8-dbdc-4777-8f49-92320d2ba9e3" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual Label</th>
+      <th>Prediksi SVM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>281</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b0427de8-dbdc-4777-8f49-92320d2ba9e3')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-b0427de8-dbdc-4777-8f49-92320d2ba9e3 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-b0427de8-dbdc-4777-8f49-92320d2ba9e3');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="logistic-regression">
+<h3>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Metode 5: Logistic Regression</span>
+<span class="n">logistic_regression_model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+<span class="n">logistic_regression_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;logistic_regression_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">lr_model_file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">logistic_regression_model</span><span class="p">,</span> <span class="n">lr_model_file</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;logistic_regression_model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">lr_model_file</span><span class="p">:</span>
+    <span class="n">loaded_lr_model</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">lr_model_file</span><span class="p">)</span>
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">loaded_lr_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+<span class="n">accuracy_lr</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_lr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Akurasi Logistic Regression:&quot;</span><span class="p">,</span> <span class="n">accuracy_lr</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metode 5: Logistic Regression&quot;</span><span class="p">)</span>
+<span class="n">lr_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Prediksi Logistic Regression&#39;</span><span class="p">:</span> <span class="n">y_pred_lr</span><span class="p">})</span>
+<span class="n">lr_results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi Logistic Regression: 0.8
+Metode 5: Logistic Regression
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/sklearn/linear_model/_logistic.py:458: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-19a32e19-0aaa-4c67-917f-88a0d37d8ba2" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual Label</th>
+      <th>Prediksi Logistic Regression</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>281</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-19a32e19-0aaa-4c67-917f-88a0d37d8ba2')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-19a32e19-0aaa-4c67-917f-88a0d37d8ba2 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-19a32e19-0aaa-4c67-917f-88a0d37d8ba2');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="knn">
+<h3>KNN<a class="headerlink" href="#knn" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hitung akurasi KNN dari k = 1 hingga 30</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">K</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+  <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+  <span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+  <span class="n">acc</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="n">best_accuracy</span> <span class="o">=</span> <span class="n">acc</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">acc</span><span class="o">.</span><span class="n">argmax</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="c1"># Tampilkan akurasi terbaik dan nilai k</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Akurasi terbaik adalah&#39;</span><span class="p">,</span> <span class="n">best_accuracy</span><span class="p">,</span> <span class="s1">&#39;dengan nilai k =&#39;</span><span class="p">,</span> <span class="n">best_k</span><span class="p">)</span>
+
+<span class="c1"># Simpan model KNN terbaik</span>
+<span class="n">best_knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">best_k</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
+<span class="n">best_knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="c1"># Save the best KNN model using pickle</span>
+<span class="n">model_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;knn.pkl&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model_file</span><span class="p">:</span>
+  <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">best_knn</span><span class="p">,</span> <span class="n">model_file</span><span class="p">)</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;knn.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">knn_model</span><span class="p">:</span>
+  <span class="n">load_knn</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">knn_model</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">load_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+<span class="c1"># Hitung dan tampilkan akurasi KNN</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Akurasi KNN dengan data test:&#39;</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">accuracy</span><span class="p">)</span>
+<span class="c1"># Hitung prediksi label KNN</span>
+<span class="n">knn_predictions</span> <span class="o">=</span> <span class="n">load_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaler</span><span class="p">)</span>
+
+<span class="c1"># Simpan hasil prediksi KNN ke dalam DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Metode 6: K-Nearest Neighbors (KNN)&quot;</span><span class="p">)</span>
+<span class="n">knn_results_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Actual Label&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;Predicted Label (KNN)&#39;</span><span class="p">:</span> <span class="n">knn_predictions</span><span class="p">})</span>
+<span class="n">knn_results_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi terbaik adalah 0.7666666666666667 dengan nilai k = 3
+Akurasi KNN dengan data test:
+0.7666666666666667
+Metode 6: K-Nearest Neighbors (KNN)
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-888cf057-74a5-456a-94e2-8a4fb2396278" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Actual Label</th>
+      <th>Predicted Label (KNN)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>281</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>265</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>278</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>195</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>247</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>275</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>280</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>213</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>236</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>194</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>197</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>210</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>288</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>219</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>244</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>209</th>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+      
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-888cf057-74a5-456a-94e2-8a4fb2396278')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+      
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+    
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-888cf057-74a5-456a-94e2-8a4fb2396278 button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-888cf057-74a5-456a-94e2-8a4fb2396278');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+  
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+</section>
+<section id="prediksi-data-baru-dengan-model-trebaik-yaitu-logistic-regression">
+<h2>Prediksi Data Baru dengan model trebaik yaitu Logistic Regression<a class="headerlink" href="#prediksi-data-baru-dengan-model-trebaik-yaitu-logistic-regression" title="Permalink to this heading">#</a></h2>
+<p>Logistic Regression adalah salah satu algoritma machine learning yang umum digunakan untuk tugas klasifikasi. Meskipun namanya mengandung istilah “regression,” logistic regression sebenarnya digunakan untuk memprediksi probabilitas sukses atau kegagalan suatu peristiwa atau untuk mengklasifikasikan data ke dalam dua kategori. Ini adalah algoritma klasifikasi biner, yang berarti memprediksi antara dua kelas, biasanya dilabeli sebagai 0 dan 1.</p>
+<section id="cara-kerja-logistic-regression">
+<h3>Cara Kerja Logistic Regression:<a class="headerlink" href="#cara-kerja-logistic-regression" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Fungsi Logistik (Sigmoid):</strong> Logistic Regression menggunakan fungsi logistik (sigmoid function) untuk menghasilkan output yang berada dalam rentang 0 hingga 1. Fungsi sigmoid digunakan untuk mengonversi hasil linier dari kombinasi linear fitur ke dalam probabilitas.</p></li>
+<li><p><strong>Pelatihan Model:</strong> Tujuan pelatihan logistic regression adalah menentukan parameter (b_0, b_1, …, b_n) yang meminimalkan deviasi antara prediksi probabilitas dan label kategori yang sesungguhnya dalam dataset pelatihan. Ini umumnya dilakukan dengan menggunakan teknik optimasi seperti gradien turun (gradient descent).</p></li>
+<li><p><strong>Thresholding:</strong> Setelah model dilatih, hasil prediksi probabilitas dapat diubah menjadi kelas diskrit (0 atau 1) dengan menentukan threshold. Jika probabilitas lebih besar dari threshold, data diklasifikasikan sebagai kelas 1, dan sebaliknya.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Minta pengguna untuk memasukkan nilai-nilai fitur</span>
+<span class="n">age</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Age: &quot;</span><span class="p">))</span>
+<span class="n">anaemia</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">creatinine_phosphokinase</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Creatinine Phosphokinase: &quot;</span><span class="p">))</span>
+<span class="n">diabetes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">ejection_fraction</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Ejection Fraction: &quot;</span><span class="p">))</span>
+<span class="n">high_blood_pressure</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai High Blood Pressure (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">platelets</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Platelets: &quot;</span><span class="p">))</span>
+<span class="n">serum_creatinine</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Serum Creatinine: &quot;</span><span class="p">))</span>
+<span class="n">serum_sodium</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Serum Sodium: &quot;</span><span class="p">))</span>
+<span class="n">sex</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Sex (0 untuk Perempuan, 1 untuk Laki-laki): &quot;</span><span class="p">))</span>
+<span class="n">smoking</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Smoking (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="n">time</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Time: &quot;</span><span class="p">))</span>
+
+<span class="c1"># Buat data baru untuk prediksi</span>
+<span class="n">new_data_bol</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">anaemia</span><span class="p">,</span> <span class="n">diabetes</span><span class="p">,</span> <span class="n">high_blood_pressure</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">smoking</span><span class="p">,</span> <span class="n">time</span><span class="p">]])</span>
+
+<span class="n">new_data_num</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">age</span><span class="p">,</span> <span class="n">creatinine_phosphokinase</span><span class="p">,</span> <span class="n">ejection_fraction</span><span class="p">,</span> <span class="n">platelets</span><span class="p">,</span> <span class="n">serum_creatinine</span><span class="p">,</span> <span class="n">serum_sodium</span><span class="p">]])</span>
+
+<span class="c1"># Normalisasi data baru menggunakan scaler yang telah disimpan</span>
+<span class="n">new_data_scaled</span> <span class="o">=</span> <span class="n">scalerr</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">new_data_num</span><span class="p">)</span>
+
+<span class="n">new_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">age</span><span class="p">,</span> <span class="n">anaemia</span><span class="p">,</span> <span class="n">creatinine_phosphokinase</span><span class="p">,</span> <span class="n">diabetes</span><span class="p">,</span> <span class="n">ejection_fraction</span><span class="p">,</span> <span class="n">high_blood_pressure</span><span class="p">,</span> <span class="n">platelets</span><span class="p">,</span> <span class="n">serum_creatinine</span><span class="p">,</span> <span class="n">serum_sodium</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">smoking</span><span class="p">,</span> <span class="n">time</span><span class="p">]])</span>
+
+<span class="c1"># Prediksi DEATH_EVENT untuk data baru menggunakan model Logistic Regression</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">loaded_lr_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_data</span><span class="p">)</span>
+
+<span class="c1"># Hasil prediksi</span>
+<span class="k">if</span> <span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Prediksi: Pasien berisiko mengalami DEATH_EVENT&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil Prediksi: Pasien tidak berisiko mengalami DEATH_EVENT&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">StdinNotImplementedError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-10-0e383ee64a1d&gt;</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Minta pengguna untuk memasukkan nilai-nilai fitur</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">age</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Age: &quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">anaemia</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">creatinine_phosphokinase</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Creatinine Phosphokinase: &quot;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">diabetes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): &quot;</span><span class="p">))</span>
+
+<span class="nn">/usr/local/lib/python3.10/dist-packages/ipykernel/kernelbase.py</span> in <span class="ni">raw_input</span><span class="nt">(self, prompt)</span>
+<span class="g g-Whitespace">    </span><span class="mi">846</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span><span class="s2">         if not self._allow_stdin:</span>
+<span class="ne">--&gt; </span><span class="mi">848</span><span class="s2">             raise StdinNotImplementedError(</span>
+<span class="g g-Whitespace">    </span><span class="mi">849</span><span class="s2">                 &quot;raw_input was called, but this frontend does not support input requests.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">850</span><span class="s2">             )</span>
+
+<span class="ne">StdinNotImplementedError</span>: raw_input was called, but this frontend does not support input requests.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="210411100047_PSD_Prediksi-Audio-Emosi.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analisis dan Prediksi pada Data Audio Emosi</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="210411100047_PSD_prediksi%20pycaret.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">Preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naive-bayes">Naive Bayes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree">Decision Tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest">Random Forest</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#svm">SVM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knn">KNN</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-data-baru-dengan-model-trebaik-yaitu-logistic-regression">Prediksi Data Baru dengan model trebaik yaitu Logistic Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja-logistic-regression">Cara Kerja Logistic Regression:</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Whinta Virginia Putri
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
