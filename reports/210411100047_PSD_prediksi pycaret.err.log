@@ -15,40 +15,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+# Import Library
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 from pycaret.classification import *
-
-# Langkah 1: Baca data dari file CSV
-url = "https://raw.githubusercontent.com/whintaaa/datapsd/main/heart_failure_clinical_records_dataset.csv"
-df = pd.read_csv(url)
-# Print the column names to identify the correct target variable
-print(df.columns)
-
-# Pilih kolom-kolom yang perlu dinormalisasi
-numerical_columns = ['age', 'creatinine_phosphokinase', 'ejection_fraction', 'platelets', 'serum_creatinine', 'serum_sodium']
-
-# Langkah 3: Split data menjadi fitur (X) dan target (y)
-X = df.drop(columns=['DEATH_EVENT'])
-y = df['DEATH_EVENT']
-
-# Inisialisasi ekperimen PyCaret
-exp = setup(data=df, target='DEATH_EVENT', normalize=True, normalize_method='zscore', numeric_features=numerical_columns)
-
-# Bandingkan model dan cari yang terbaik
-best_model = compare_models()
-
-best_model
+from imblearn.over_sampling import RandomOverSampler
+from pycaret.classification import *
+import pickle
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-[0;32m<ipython-input-1-8d7173f66650>[0m in [0;36m<cell line: 2>[0;34m()[0m
-[1;32m      1[0m [0;32mimport[0m [0mpandas[0m [0;32mas[0m [0mpd[0m[0;34m[0m[0;34m[0m[0m
-[0;32m----> 2[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclassification[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      3[0m [0;34m[0m[0m
-[1;32m      4[0m [0;31m# Langkah 1: Baca data dari file CSV[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0murl[0m [0;34m=[0m [0;34m"https://raw.githubusercontent.com/whintaaa/datapsd/main/heart_failure_clinical_records_dataset.csv"[0m[0;34m[0m[0;34m[0m[0m
+[0;32m<ipython-input-1-52f28334b535>[0m in [0;36m<cell line: 5>[0;34m()[0m
+[1;32m      3[0m [0;32mimport[0m [0mmatplotlib[0m[0;34m.[0m[0mpyplot[0m [0;32mas[0m [0mplt[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0;32mimport[0m [0mseaborn[0m [0;32mas[0m [0msns[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 5[0;31m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclassification[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      6[0m [0;32mfrom[0m [0mimblearn[0m[0;34m.[0m[0mover_sampling[0m [0;32mimport[0m [0mRandomOverSampler[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      7[0m [0;32mfrom[0m [0mpycaret[0m[0;34m.[0m[0mclassification[0m [0;32mimport[0m [0;34m*[0m[0;34m[0m[0;34m[0m[0m
 
 [0;31mModuleNotFoundError[0m: No module named 'pycaret'
 
