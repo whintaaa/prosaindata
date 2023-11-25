@@ -49,7 +49,7 @@ else:
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
-[0;32m<ipython-input-11-156bb004ec54>[0m in [0;36m<cell line: 2>[0;34m()[0m
+[0;32m<ipython-input-10-156bb004ec54>[0m in [0;36m<cell line: 2>[0;34m()[0m
 [1;32m      1[0m [0;31m# Membaca data baru yang akan diprediksi[0m[0;34m[0m[0;34m[0m[0m
 [0;32m----> 2[0;31m [0mage[0m [0;34m=[0m [0mfloat[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Age: "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m[1;32m      3[0m [0manaemia[0m [0;34m=[0m [0mint[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m

@@ -454,14 +454,6 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mount Google Drive</span>
-<span class="c1"># drive.mount(&#39;/content/drive&#39;)</span>
-</pre></div>
-</div>
-</div>
-</div>
 <section id="deskripsi-dataset">
 <h2>Deskripsi Dataset :<a class="headerlink" href="#deskripsi-dataset" title="Permalink to this heading">#</a></h2>
 <p>Ada sekitar 200 kata target yang diucapkan dalam frase pembawa ‘say the word_’ oleh dua aktris (berusia 26 dan 64 tahun) dan rekaman dibuat dari set tersebut menggambarkan tujuh emosi (marah, jijik, takut, bahagia, terkejut menyenangkan, sedih, dan netral). Terdapat total 2800 titik data (file audio).</p>
@@ -481,7 +473,7 @@ Berikut adalah hasil Audio_features:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-4f06129f-f39b-480c-846e-93c56701afa4" class="colab-df-container">
+  <div id="df-2414f044-97c8-440f-8771-792e1a4f4e20" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -687,7 +679,7 @@ Berikut adalah hasil Audio_features:</p>
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-4f06129f-f39b-480c-846e-93c56701afa4')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-2414f044-97c8-440f-8771-792e1a4f4e20')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -739,12 +731,12 @@ Berikut adalah hasil Audio_features:</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-4f06129f-f39b-480c-846e-93c56701afa4 button.colab-df-convert');
+        document.querySelector('#df-2414f044-97c8-440f-8771-792e1a4f4e20 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-4f06129f-f39b-480c-846e-93c56701afa4');
+        const element = document.querySelector('#df-2414f044-97c8-440f-8771-792e1a4f4e20');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -791,7 +783,7 @@ Berikut adalah hasil Audio_features:</p>
 <p>Pada langkah ini, Anda membuat objek <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> dari scikit-learn dan kemudian menggunakan metode <code class="docutils literal notranslate"><span class="pre">fit</span></code> untuk menghitung rata-rata dan deviasi standar dari dataset pelatihan (<code class="docutils literal notranslate"><span class="pre">X_train</span></code>).</p>
 </li>
 <li><p><strong>Save Scaler Using Pickle:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaler_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/scaler.pkl&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaler_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;scaler.pkl&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">scaler_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">scaler_file</span><span class="p">:</span>
     <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">scaler_file</span><span class="p">)</span>
 </pre></div>
@@ -805,7 +797,7 @@ Berikut adalah hasil Audio_features:</p>
 <p>Di sini, Anda menggunakan scaler yang telah dilatih untuk melakukan normalisasi pada dataset pelatihan (<code class="docutils literal notranslate"><span class="pre">X_train</span></code>) dan menyimpan hasilnya dalam <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code>.</p>
 </li>
 <li><p><strong>Load Scaler Using Pickle:</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">normalisasi</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">normalisasi</span><span class="p">:</span>
     <span class="n">loadscal</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">normalisasi</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -819,12 +811,12 @@ Berikut adalah hasil Audio_features:</p>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="c1"># Save the scaler using pickle</span>
-<span class="n">scaler_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/scaler.pkl&#39;</span>
+<span class="n">scaler_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;scaler.pkl&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">scaler_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">scaler_file</span><span class="p">:</span>
     <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">scaler_file</span><span class="p">)</span>
 
 <span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">normalisasi</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">normalisasi</span><span class="p">:</span>
     <span class="n">loadscal</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">normalisasi</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -910,11 +902,11 @@ Berikut adalah hasil Audio_features:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the best KNN model using pickle</span>
-<span class="n">model_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/model.pkl&#39;</span>
+<span class="n">model_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;model.pkl&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">model_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">model_file</span><span class="p">:</span>
     <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">best_knn</span><span class="p">,</span> <span class="n">model_file</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">knn_model</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;model.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">knn_model</span><span class="p">:</span>
     <span class="n">load_knn</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">knn_model</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1044,7 +1036,7 @@ Berikut adalah hasil Audio_features:</p>
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-1b5803b2-bb05-4e04-9aac-8c28ae92d04b" class="colab-df-container">
+  <div id="df-9728269b-3075-4b32-be9a-65fa9fbd9e0f" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1130,7 +1122,7 @@ Berikut adalah hasil Audio_features:</p>
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-1b5803b2-bb05-4e04-9aac-8c28ae92d04b')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-9728269b-3075-4b32-be9a-65fa9fbd9e0f')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1182,12 +1174,12 @@ Berikut adalah hasil Audio_features:</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-1b5803b2-bb05-4e04-9aac-8c28ae92d04b button.colab-df-convert');
+        document.querySelector('#df-9728269b-3075-4b32-be9a-65fa9fbd9e0f button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-1b5803b2-bb05-4e04-9aac-8c28ae92d04b');
+        const element = document.querySelector('#df-9728269b-3075-4b32-be9a-65fa9fbd9e0f');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1249,7 +1241,7 @@ Berikut adalah hasil Audio_features:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the PCA model</span>
-<span class="n">pca_model_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/PCA10.pkl&#39;</span>
+<span class="n">pca_model_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;PCA10.pkl&#39;</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pca_model_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">pca_model_file</span><span class="p">:</span>
     <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">sklearn_pca</span><span class="p">,</span> <span class="n">pca_model_file</span><span class="p">)</span>
 <span class="c1"># Load the PCA model</span>
@@ -1305,7 +1297,7 @@ Berikut adalah hasil Audio_features:</p>
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-d57c0859-5630-42ca-b59f-d53f44581a92" class="colab-df-container">
+  <div id="df-bc146ca9-5a8d-41ef-aa43-9d43f4f3aa24" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1391,7 +1383,7 @@ Berikut adalah hasil Audio_features:</p>
     <div class="colab-df-buttons">
       
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-d57c0859-5630-42ca-b59f-d53f44581a92')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-bc146ca9-5a8d-41ef-aa43-9d43f4f3aa24')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
       
@@ -1443,12 +1435,12 @@ Berikut adalah hasil Audio_features:</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-d57c0859-5630-42ca-b59f-d53f44581a92 button.colab-df-convert');
+        document.querySelector('#df-bc146ca9-5a8d-41ef-aa43-9d43f4f3aa24 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-d57c0859-5630-42ca-b59f-d53f44581a92');
+        const element = document.querySelector('#df-bc146ca9-5a8d-41ef-aa43-9d43f4f3aa24');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1563,9 +1555,9 @@ Unggah file audio WAV untuk menghitung fitur statistiknya.
 </pre></div>
 </div>
 <div class="output text_html">
-     <input type="file" id="files-8cefbf50-3740-4c96-8d1b-00ed778fa72f" name="files[]" multiple disabled
+     <input type="file" id="files-8a045cee-39cd-4694-b051-e9f96666030b" name="files[]" multiple disabled
         style="border:none" />
-     <output id="result-8cefbf50-3740-4c96-8d1b-00ed778fa72f">
+     <output id="result-8a045cee-39cd-4694-b051-e9f96666030b">
       Upload widget is only available when the cell has been executed in the
       current browser session. Please rerun this cell to enable.
       </output>
@@ -1746,7 +1738,7 @@ scope.google.colab._files = {
 })(self);
 </script> </div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-18-b7a043c05da3&gt;</span> in <span class="ni">&lt;cell line: 46&gt;</span><span class="nt">()</span>
+<span class="nn">&lt;ipython-input-17-b7a043c05da3&gt;</span> in <span class="ni">&lt;cell line: 46&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="c1"># Unggah file audio</span>
 <span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">files</span>
 <span class="ne">---&gt; </span><span class="mi">46</span> <span class="n">uploaded_audio</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
