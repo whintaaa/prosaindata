@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 778, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/usr/local/lib/python3.10/dist-packages/jupyter_core/utils/__init__.py", line 189, in ensure_async
-    result = await obj
-  File "/usr/local/lib/python3.10/dist-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/usr/local/lib/python3.10/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1305, in execute
@@ -20,16 +9,59 @@ Traceback (most recent call last):
     return future.result()
   File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1001, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 802, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 852, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-!pip install pycaret
--------------------
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.10/dist-packages/nbclient/client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Membaca data baru yang akan diprediksi
+age = float(input("Masukkan nilai Age: "))
+anaemia = int(input("Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): "))
+creatinine_phosphokinase = float(input("Masukkan nilai Creatinine Phosphokinase: "))
+diabetes = int(input("Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): "))
+ejection_fraction = float(input("Masukkan nilai Ejection Fraction: "))
+high_blood_pressure = int(input("Masukkan nilai High Blood Pressure (0 untuk Tidak, 1 untuk Ya): "))
+platelets = float(input("Masukkan nilai Platelets: "))
+serum_creatinine = float(input("Masukkan nilai Serum Creatinine: "))
+serum_sodium = float(input("Masukkan nilai Serum Sodium: "))
+sex = int(input("Masukkan nilai Sex (0 untuk Perempuan, 1 untuk Laki-laki): "))
+smoking = int(input("Masukkan nilai Smoking (0 untuk Tidak, 1 untuk Ya): "))
+time = float(input("Masukkan nilai Time: "))
+
+# Membuat data baru untuk prediksi
+new_data = pd.DataFrame([[age, anaemia, creatinine_phosphokinase, diabetes, ejection_fraction, high_blood_pressure, platelets, serum_creatinine, serum_sodium, sex, smoking, time]], columns=X.columns)
+
+# Memuat model terbaik dari file pickle
+loaded_model = load_model('best_model')
+
+# Melakukan prediksi pada data baru
+predictions = predict_model(loaded_model, data=new_data)
+
+# Menampilkan hasil prediksi
+if predictions['prediction_label'].iloc[0] == 1:
+    print("Hasil Prediksi: Pasien berisiko mengalami DEATH_EVENT")
+else:
+    print("Hasil Prediksi: Pasien tidak berisiko mengalami DEATH_EVENT")
+
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mStdinNotImplementedError[0m                  Traceback (most recent call last)
+[0;32m<ipython-input-11-156bb004ec54>[0m in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [0;31m# Membaca data baru yang akan diprediksi[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 2[0;31m [0mage[0m [0;34m=[0m [0mfloat[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Age: "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m      3[0m [0manaemia[0m [0;34m=[0m [0mint[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Anaemia (0 untuk Tidak, 1 untuk Ya): "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      4[0m [0mcreatinine_phosphokinase[0m [0;34m=[0m [0mfloat[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Creatinine Phosphokinase: "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      5[0m [0mdiabetes[0m [0;34m=[0m [0mint[0m[0;34m([0m[0minput[0m[0;34m([0m[0;34m"Masukkan nilai Diabetes (0 untuk Tidak, 1 untuk Ya): "[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m/usr/local/lib/python3.10/dist-packages/ipykernel/kernelbase.py[0m in [0;36mraw_input[0;34m(self, prompt)[0m
+[1;32m    846[0m         """
+[1;32m    847[0m         [0;32mif[0m [0;32mnot[0m [0mself[0m[0;34m.[0m[0m_allow_stdin[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 848[0;31m             raise StdinNotImplementedError(
+[0m[1;32m    849[0m                 [0;34m"raw_input was called, but this frontend does not support input requests."[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    850[0m             )
+
+[0;31mStdinNotImplementedError[0m: raw_input was called, but this frontend does not support input requests.
 

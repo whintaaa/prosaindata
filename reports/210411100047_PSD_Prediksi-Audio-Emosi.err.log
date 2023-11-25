@@ -30,7 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-# Mount Google Drive
-drive.mount('/content/drive')
+['import librosa', 'import numpy as np', '', '# Fungsi untuk menghitung fitur audio', 'def extract_features(audio_path):']
+...
+['', '    print("Fitur-fitur setelah di normalisasi: ", datauji)', '    print("Data PCA:", datapca)', '    # print("Predicted Label (PCA):", y_pred_pca)', '    print("Predicted Label (KNN):", y_pred_uji)']
 -------------------
 
