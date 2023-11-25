@@ -169,14 +169,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis dan Prediksi pada Data Audio Emosi</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="210411100047_PSD_prediksi%20pycaret.html">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</a></li>
-
-
-
-
-
-
 </ul>
 
     </div>
@@ -401,20 +394,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analisis dan Prediksi pada Data Audio Emosi</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset :</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-processing">Dataset Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing">Pre-processing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-scaler">Normalisasi Scaler</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-k-terbaik-dengan-akurasi-paling-tinggi">Mencari k terbaik dengan akurasi paling tinggi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-knn-dengan-k-terbaik">Menyimpan model knn dengan k terbaik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-pca">Reduksi PCA</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-data-audio">Prediksi Data Audio</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-data-audio">Prediksi Data Audio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -509,8 +505,8 @@ document.write(`
 <p>Kumpulan data ini diatur sedemikian rupa sehingga setiap dari dua aktris perempuan dan emosi mereka terdapat dalam folder tersendiri. Dan di dalamnya, semua file audio 200 kata target dapat ditemukan. Format file audio ini adalah format WAV.</p>
 <p>Berikut link kaggle dataset: <a class="reference external" href="https://www.kaggle.com/datasets/ejlok1/toronto-emotional-speech-set-tess?resource=download">https://www.kaggle.com/datasets/ejlok1/toronto-emotional-speech-set-tess?resource=download</a></p>
 </section>
-<section id="dataset-processing">
-<h2>Dataset Processing<a class="headerlink" href="#dataset-processing" title="Permalink to this heading">#</a></h2>
+<section id="pre-processing">
+<h2>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this heading">#</a></h2>
 <p>Dibuat 11 fitur dari Dataset audio kaggle yaitu Label, Mean, Median, Std_Deviation, Zero_Crossing_Rate, Energy, Spectral_Centroid, Spectral_Bandwidth, Spectral_Rolloff, Chroma, dan MFCCs dari 2191 data, Kemudian di simpan pada format csv.
 Berikut adalah hasil Audio_features:</p>
 <div class="cell docutils container">
@@ -522,7 +518,7 @@ Berikut adalah hasil Audio_features:</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-aba5b9ea-095e-441f-95c1-243fc4a35dfc" class="colab-df-container">
+  <div id="df-b5127170-e1f1-4ae7-baaa-ccd6bf910e2d" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -728,7 +724,7 @@ Berikut adalah hasil Audio_features:</p>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-aba5b9ea-095e-441f-95c1-243fc4a35dfc')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-b5127170-e1f1-4ae7-baaa-ccd6bf910e2d')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -780,12 +776,12 @@ Berikut adalah hasil Audio_features:</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-aba5b9ea-095e-441f-95c1-243fc4a35dfc button.colab-df-convert');
+        document.querySelector('#df-b5127170-e1f1-4ae7-baaa-ccd6bf910e2d button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-aba5b9ea-095e-441f-95c1-243fc4a35dfc');
+        const element = document.querySelector('#df-b5127170-e1f1-4ae7-baaa-ccd6bf910e2d');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -805,8 +801,8 @@ Berikut adalah hasil Audio_features:</p>
   </div>
 
 
-<div id="df-3c597163-c978-4c85-8a2d-299c027790f5">
-  <button class="colab-df-quickchart" onclick="quickchart('df-3c597163-c978-4c85-8a2d-299c027790f5')"
+<div id="df-e1b8ff8b-ee2f-4eae-a541-b0dc77269f3d">
+  <button class="colab-df-quickchart" onclick="quickchart('df-e1b8ff8b-ee2f-4eae-a541-b0dc77269f3d')"
             title="Suggest charts"
             style="display:none;">
 
@@ -925,7 +921,7 @@ Berikut adalah hasil Audio_features:</p>
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-3c597163-c978-4c85-8a2d-299c027790f5 button');
+        document.querySelector('#df-e1b8ff8b-ee2f-4eae-a541-b0dc77269f3d button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
@@ -948,6 +944,39 @@ Berikut adalah hasil Audio_features:</p>
 </div>
 <section id="normalisasi-scaler">
 <h3>Normalisasi Scaler<a class="headerlink" href="#normalisasi-scaler" title="Permalink to this heading">#</a></h3>
+<p>Normalisasi scaler dalam konteks kode yang Anda berikan tampaknya menggunakan <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> dari pustaka scikit-learn untuk melakukan normalisasi pada data. Normalisasi adalah proses mengubah nilai-nilai dalam dataset ke skala umum, biasanya dengan mengurangkan rata-rata dan membagi hasilnya dengan deviasi standar.</p>
+<p>Mari kita bahas langkah-langkah dalam kode tersebut:</p>
+<ol class="arabic">
+<li><p><strong>Define and Fit Scaler:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pada langkah ini, Anda membuat objek <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> dari scikit-learn dan kemudian menggunakan metode <code class="docutils literal notranslate"><span class="pre">fit</span></code> untuk menghitung rata-rata dan deviasi standar dari dataset pelatihan (<code class="docutils literal notranslate"><span class="pre">X_train</span></code>).</p>
+</li>
+<li><p><strong>Save Scaler Using Pickle:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scaler_file_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/scaler.pkl&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">scaler_file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">scaler_file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">scaler_file</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Pada langkah ini, Anda menyimpan objek scaler ke dalam file menggunakan modul <code class="docutils literal notranslate"><span class="pre">pickle</span></code>. Ini memungkinkan Anda untuk menggunakan kembali objek scaler tanpa harus melatih ulang model setiap kali Anda menjalankan program.</p>
+</li>
+<li><p><strong>Transform Training Data Using Scaler:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Di sini, Anda menggunakan scaler yang telah dilatih untuk melakukan normalisasi pada dataset pelatihan (<code class="docutils literal notranslate"><span class="pre">X_train</span></code>) dan menyimpan hasilnya dalam <code class="docutils literal notranslate"><span class="pre">X_train_scaled</span></code>.</p>
+</li>
+<li><p><strong>Load Scaler Using Pickle:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;/content/drive/My Drive/prosaindata/tugas/scaler.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">normalisasi</span><span class="p">:</span>
+    <span class="n">loadscal</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">normalisasi</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Langkah terakhir adalah memuat kembali objek scaler dari file yang telah disimpan sebelumnya menggunakan modul <code class="docutils literal notranslate"><span class="pre">pickle</span></code>. Objek scaler yang dimuat disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">loadscal</span></code>.</p>
+</li>
+</ol>
+<p>Dengan cara ini, Anda dapat menggunakan objek <code class="docutils literal notranslate"><span class="pre">loadscal</span></code> untuk melakukan transformasi normalisasi pada dataset lain dengan menggunakan parameter normalisasi yang sama seperti yang telah dihitung pada dataset pelatihan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define and fit the scaler on the training dataset</span>
@@ -997,6 +1026,9 @@ Berikut adalah hasil Audio_features:</p>
 </div>
 </div>
 </section>
+</section>
+<section id="modelling">
+<h2>Modelling<a class="headerlink" href="#modelling" title="Permalink to this heading">#</a></h2>
 <section id="mencari-k-terbaik-dengan-akurasi-paling-tinggi">
 <h3>Mencari k terbaik dengan akurasi paling tinggi<a class="headerlink" href="#mencari-k-terbaik-dengan-akurasi-paling-tinggi" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
@@ -1176,7 +1208,7 @@ Berikut adalah hasil Audio_features:</p>
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-cda5d027-8b96-457b-9c60-a31b2dc03058" class="colab-df-container">
+  <div id="df-26b1ba97-2e34-4353-8a64-4eae4b627bc6" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1262,7 +1294,7 @@ Berikut adalah hasil Audio_features:</p>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-cda5d027-8b96-457b-9c60-a31b2dc03058')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-26b1ba97-2e34-4353-8a64-4eae4b627bc6')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1314,12 +1346,12 @@ Berikut adalah hasil Audio_features:</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-cda5d027-8b96-457b-9c60-a31b2dc03058 button.colab-df-convert');
+        document.querySelector('#df-26b1ba97-2e34-4353-8a64-4eae4b627bc6 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-cda5d027-8b96-457b-9c60-a31b2dc03058');
+        const element = document.querySelector('#df-26b1ba97-2e34-4353-8a64-4eae4b627bc6');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1339,8 +1371,8 @@ Berikut adalah hasil Audio_features:</p>
   </div>
 
 
-<div id="df-80ba25d8-32e8-4bb4-8b39-452ce07290cf">
-  <button class="colab-df-quickchart" onclick="quickchart('df-80ba25d8-32e8-4bb4-8b39-452ce07290cf')"
+<div id="df-5fb14820-2ccb-42c2-b450-9331bbc90052">
+  <button class="colab-df-quickchart" onclick="quickchart('df-5fb14820-2ccb-42c2-b450-9331bbc90052')"
             title="Suggest charts"
             style="display:none;">
 
@@ -1459,7 +1491,7 @@ Berikut adalah hasil Audio_features:</p>
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-80ba25d8-32e8-4bb4-8b39-452ce07290cf button');
+        document.querySelector('#df-5fb14820-2ccb-42c2-b450-9331bbc90052 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
@@ -1472,6 +1504,7 @@ Berikut adalah hasil Audio_features:</p>
 </section>
 <section id="reduksi-pca">
 <h3>Reduksi PCA<a class="headerlink" href="#reduksi-pca" title="Permalink to this heading">#</a></h3>
+<p>Reduksi PCA (Principal Component Analysis) adalah teknik yang digunakan untuk mengurangi dimensi dari dataset yang kompleks, dengan tetap mempertahankan sebagian besar informasi yang terkandung dalam dataset tersebut. PCA bekerja dengan mentransformasi data asli ke dalam ruang fitur baru yang disebut komponen utama atau principal components. Komponen utama ini diurutkan berdasarkan seberapa besar variansinya, sehingga komponen pertama menyimpan sebagian besar varians, yang diikuti oleh komponen kedua, dan seterusnya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lakukan reduksi PCA</span>
@@ -1563,7 +1596,7 @@ Berikut adalah hasil Audio_features:</p>
 </pre></div>
 </div>
 <div class="output text_html">
-  <div id="df-b9e6e8f4-6c73-47e8-8732-1e47dafc47f1" class="colab-df-container">
+  <div id="df-a35f32e3-62a6-4e7a-8cb2-1643ad8f5a01" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -1649,7 +1682,7 @@ Berikut adalah hasil Audio_features:</p>
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-b9e6e8f4-6c73-47e8-8732-1e47dafc47f1')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-a35f32e3-62a6-4e7a-8cb2-1643ad8f5a01')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -1701,12 +1734,12 @@ Berikut adalah hasil Audio_features:</p>
 
     <script>
       const buttonEl =
-        document.querySelector('#df-b9e6e8f4-6c73-47e8-8732-1e47dafc47f1 button.colab-df-convert');
+        document.querySelector('#df-a35f32e3-62a6-4e7a-8cb2-1643ad8f5a01 button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-b9e6e8f4-6c73-47e8-8732-1e47dafc47f1');
+        const element = document.querySelector('#df-a35f32e3-62a6-4e7a-8cb2-1643ad8f5a01');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -1726,8 +1759,8 @@ Berikut adalah hasil Audio_features:</p>
   </div>
 
 
-<div id="df-65983ff6-e96f-4d1a-ba3f-5a0d801fb51d">
-  <button class="colab-df-quickchart" onclick="quickchart('df-65983ff6-e96f-4d1a-ba3f-5a0d801fb51d')"
+<div id="df-15156c17-022d-4cf2-8ab1-428b01da9049">
+  <button class="colab-df-quickchart" onclick="quickchart('df-15156c17-022d-4cf2-8ab1-428b01da9049')"
             title="Suggest charts"
             style="display:none;">
 
@@ -1846,7 +1879,7 @@ Berikut adalah hasil Audio_features:</p>
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-65983ff6-e96f-4d1a-ba3f-5a0d801fb51d button');
+        document.querySelector('#df-15156c17-022d-4cf2-8ab1-428b01da9049 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
@@ -1858,9 +1891,10 @@ Berikut adalah hasil Audio_features:</p>
 </div>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="prediksi-data-audio">
-<h1>Prediksi Data Audio<a class="headerlink" href="#prediksi-data-audio" title="Permalink to this heading">#</a></h1>
+<section id="evaluasi">
+<h2>Evaluasi<a class="headerlink" href="#evaluasi" title="Permalink to this heading">#</a></h2>
+<section id="prediksi-data-audio">
+<h3>Prediksi Data Audio<a class="headerlink" href="#prediksi-data-audio" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">librosa</span>
@@ -1947,9 +1981,9 @@ Unggah file audio WAV untuk menghitung fitur statistiknya.
 </pre></div>
 </div>
 <div class="output text_html">
-     <input type="file" id="files-6c6187df-5375-49b6-9bf1-0dac52fdee54" name="files[]" multiple disabled
+     <input type="file" id="files-bda6911d-4278-47a2-b5cd-50e4e8a76a4e" name="files[]" multiple disabled
         style="border:none" />
-     <output id="result-6c6187df-5375-49b6-9bf1-0dac52fdee54">
+     <output id="result-bda6911d-4278-47a2-b5cd-50e4e8a76a4e">
       Upload widget is only available when the cell has been executed in the
       current browser session. Please rerun this cell to enable.
       </output>
@@ -2128,25 +2162,24 @@ scope.google.colab._files = {
   _uploadFilesContinue,
 };
 })(self);
-</script> </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving OAF_bath_neutral.wav to OAF_bath_neutral.wav
-Audio file: OAF_bath_neutral.wav
+</script> </div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Saving OAF_bite_disgust.wav to OAF_bite_disgust.wav
+Audio file: OAF_bite_disgust.wav
 ### Hasil Ekstraksi Fitur Audio:
-Mean: -9.028701242641546e-06
-Median: 0.0005438459338620305
-Std Deviation: 0.01194076333194971
-Zero Crossing Rate: 0.09619660073138298
-Energy: 0.010035553947091103
-Spectral Centroid: 2136.114287964685
-Spectral Bandwidth: 2321.7091544902114
-Spectral Rolloff: 3862.4610413896276
-Chroma: 0.306325763463974
-MFCCs: -32.774452209472656
-Fitur-fitur setelah di normalisasi:  [[ 0.18656179  0.03217543 -1.04686929 -1.00256185 -1.05950545 -0.83797543
-   0.90193552 -0.64365967  0.05967935 -1.05331644]]
-Data PCA: [[-2.16368289e+00 -5.18279955e-01  9.60694693e-01  1.87580696e-01
-   6.15032998e-01  8.29761803e-02  9.24581682e-02  1.70910258e-02
-  -1.79700466e-04  1.52797971e-02]]
-Predicted Label (KNN): [&#39;neutral&#39;]
+Mean: -2.2098407498560846e-05
+Median: 0.000759080343414098
+Std Deviation: 0.02309066243469715
+Zero Crossing Rate: 0.10909799429086539
+Energy: 0.01691955141723156
+Spectral Centroid: 2123.0714181321196
+Spectral Bandwidth: 2208.9362323255236
+Spectral Rolloff: 3738.598867563101
+Chroma: 0.36925455927848816
+MFCCs: -29.30312156677246
+Fitur-fitur setelah di normalisasi:  [[-0.09837685  0.32714865 -0.59620418 -0.77077837 -0.70190759 -0.85917477
+   0.08174241 -0.77696305  1.57644537 -0.13066898]]
+Data PCA: [[-1.48356266 -0.39089473 -0.6603022  -0.33854531  1.50702673 -0.25807244
+   0.38986447  0.08743024  0.08100064  0.0377777 ]]
+Predicted Label (KNN): [&#39;disgust&#39;]
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/sklearn/base.py:439: UserWarning: X does not have valid feature names, but StandardScaler was fitted with feature names
@@ -2155,6 +2188,13 @@ Predicted Label (KNN): [&#39;neutral&#39;]
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this heading">#</a></h2>
+<p>Link Streamlit/Aplikasi Prediksi pada data audio emosi:
+<a class="reference external" href="https://psd-audio-emosi.streamlit.app/">https://psd-audio-emosi.streamlit.app</a></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2220,20 +2260,23 @@ Predicted Label (KNN): [&#39;neutral&#39;]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analisis dan Prediksi pada Data Audio Emosi</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset :</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-processing">Dataset Processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processing">Pre-processing</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-scaler">Normalisasi Scaler</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-k-terbaik-dengan-akurasi-paling-tinggi">Mencari k terbaik dengan akurasi paling tinggi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-knn-dengan-k-terbaik">Menyimpan model knn dengan k terbaik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-pca">Reduksi PCA</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-data-audio">Prediksi Data Audio</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-data-audio">Prediksi Data Audio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

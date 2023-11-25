@@ -170,14 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="210411100047_PSD_Prediksi-Audio-Emosi.html">Analisis dan Prediksi pada Data Audio Emosi</a></li>
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</a></li>
-
-
-
-
-
-
 </ul>
 
     </div>
@@ -402,48 +395,42 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">Business understanding</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">Business understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-memahami-data">Data understanding / Memahami Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset-dan-tujuan-dataset">Deskripsi Dataset Dan Tujuan Dataset:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur-fitur">Penjelasan Fitur-fitur:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-memahami-data">Data understanding / Memahami Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset-dan-tujuan-dataset">Deskripsi Dataset Dan Tujuan Dataset:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur-fitur">Penjelasan Fitur-fitur:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-satistik-dataset">Eksplorasi Dataset / Satistik Dataset:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-satistik-dataset">Eksplorasi Dataset / Satistik Dataset:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oversampling">Oversampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menggunakan-zscore">Normalisasi Menggunakan Zscore</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oversampling">Oversampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menggunakan-zscore">Normalisasi Menggunakan Zscore</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-model-terbaik-menggunakan-pycaret">Mencari Model Terbaik Menggunakan Pycaret</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-model-terbaik-menggunakan-pycaret">Mencari Model Terbaik Menggunakan Pycaret</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-terbaik-menggunakan-pycaret">Menyimpan Model terbaik Menggunakan Pycaret</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">Cara Kerja:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-terbaik-menggunakan-pycaret">Menyimpan Model terbaik Menggunakan Pycaret</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">Cara Kerja:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-death-event-menggunakan-random-forest-classifier-rf-dengan-data-baru">Prediksi Death_Event Menggunakan Random Forest Classifier (rf) dengan Data Baru</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-menggunakan-random-forest-untuk-klasifikasi">Prediksi Menggunakan Random Forest untuk Klasifikasi:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-kode">Contoh Kode:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-death-event-menggunakan-random-forest-classifier-rf-dengan-data-baru">Prediksi Death_Event Menggunakan Random Forest Classifier (rf) dengan Data Baru</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-streamlit-aplikasi-prediksi-pada-dataset-heart-failure-clinical-records">Link Streamlit/Aplikasi Prediksi pada dataset Heart failure clinical records:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#link-streamlit-aplikasi-prediksi-pada-dataset-heart-failure-clinical-records">Link Streamlit/Aplikasi Prediksi pada dataset Heart failure clinical records:</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -459,21 +446,20 @@ document.write(`
 <p>Nama: Whinta Virginia Putri</p>
 <p>NIM: 210411100047</p>
 <p>Proyek Sain Data</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="business-understanding">
-<h1>Business understanding<a class="headerlink" href="#business-understanding" title="Permalink to this heading">#</a></h1>
+<section id="business-understanding">
+<h2>Business understanding<a class="headerlink" href="#business-understanding" title="Permalink to this heading">#</a></h2>
 <section id="tujuan-analisis">
-<h2>Tujuan Analisis:<a class="headerlink" href="#tujuan-analisis" title="Permalink to this heading">#</a></h2>
+<h3>Tujuan Analisis:<a class="headerlink" href="#tujuan-analisis" title="Permalink to this heading">#</a></h3>
 <p>Analisis pada dataset Heart failure clinical records bertujuan untuk memprediksi kemungkinan terjadinya gagal jantung pada pasien berdasarkan 13 fitur-fitur klinis mereka.</p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-understanding-memahami-data">
-<h1>Data understanding / Memahami Data<a class="headerlink" href="#data-understanding-memahami-data" title="Permalink to this heading">#</a></h1>
+<section id="data-understanding-memahami-data">
+<h2>Data understanding / Memahami Data<a class="headerlink" href="#data-understanding-memahami-data" title="Permalink to this heading">#</a></h2>
 <section id="deskripsi-dataset">
-<h2>Deskripsi Dataset<a class="headerlink" href="#deskripsi-dataset" title="Permalink to this heading">#</a></h2>
+<h3>Deskripsi Dataset<a class="headerlink" href="#deskripsi-dataset" title="Permalink to this heading">#</a></h3>
 <p>Dataset “Heart failure clinical records” merupakan kumpulan data yang berisi catatan medis dari 299 pasien yang mengalami gagal jantung. Data ini dikumpulkan selama periode pemantauan pasien-pasien tersebut. Setiap profil pasien dalam dataset ini dilengkapi dengan 13 fitur klinis yang mencerminkan kondisi kesehatan mereka. Di bawah ini, saya akan menjelaskan deskripsi dari dataset ini serta tujuan utamanya:</p>
 <section id="deskripsi-dataset-dan-tujuan-dataset">
-<h3>Deskripsi Dataset Dan Tujuan Dataset:<a class="headerlink" href="#deskripsi-dataset-dan-tujuan-dataset" title="Permalink to this heading">#</a></h3>
+<h4>Deskripsi Dataset Dan Tujuan Dataset:<a class="headerlink" href="#deskripsi-dataset-dan-tujuan-dataset" title="Permalink to this heading">#</a></h4>
 <ol class="arabic">
 <li><p>Jumlah Sampel: Dataset ini berisi informasi dari 299 pasien yang mengalami gagal jantung dan tidak ada missing values.</p></li>
 <li><p>Fitur Klinis: Setiap pasien dalam dataset ini memiliki 13 fitur klinis yang mencakup berbagai aspek dari kesehatan mereka. Beberapa contoh fitur klinis yang mungkin termasuk dalam dataset ini adalah Usia, tekanan darah, kadar serum kreatinin, kadar serum natrium, kadar serum kalium, ejection fraction (fraksi ejeksi), jenis kelamin pasien, dan lain sebagainya.  dibawah ini adalah fitur pada dataset:
@@ -490,6 +476,361 @@ document.write(`
 <p>Tujuan utama dari dataset ini adalah meningkatkan pemahaman tentang gagal jantung, membantu dalam pengembangan metode prediktif, serta mendukung penelitian dan pengembangan terkait kesehatan jantung. Data ini menjadi dasar penting untuk menjalankan berbagai analisis dan penelitian dalam upaya untuk meningkatkan diagnosis, perawatan, dan pencegahan penyakit gagal jantung.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pycaret
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pycaret
+  Downloading pycaret-3.2.0-py3-none-any.whl (484 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/484.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">112.6/484.7 kB</span> <span class=" -Color -Color-Red">3.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">484.7/484.7 kB</span> <span class=" -Color -Color-Red">7.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting category-encoders&gt;=2.4.0 (from pycaret)
+  Downloading category_encoders-2.6.3-py2.py3-none-any.whl (81 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/81.9 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">81.9/81.9 kB</span> <span class=" -Color -Color-Red">11.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: cloudpickle in /usr/local/lib/python3.10/dist-packages (from pycaret) (2.2.1)
+Collecting deprecation&gt;=2.1.0 (from pycaret)
+  Downloading deprecation-2.1.0-py2.py3-none-any.whl (11 kB)
+Requirement already satisfied: imbalanced-learn&gt;=0.8.1 in /usr/local/lib/python3.10/dist-packages (from pycaret) (0.10.1)
+Requirement already satisfied: importlib-metadata&gt;=4.12.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (6.8.0)
+Requirement already satisfied: ipython&gt;=5.5.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (7.34.0)
+Requirement already satisfied: ipywidgets&gt;=7.6.5 in /usr/local/lib/python3.10/dist-packages (from pycaret) (7.7.1)
+Requirement already satisfied: jinja2&gt;=1.2 in /usr/local/lib/python3.10/dist-packages (from pycaret) (3.1.2)
+Requirement already satisfied: joblib&gt;=1.2.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (1.3.2)
+Collecting kaleido&gt;=0.2.1 (from pycaret)
+  Downloading kaleido-0.2.1-py2.py3-none-manylinux1_x86_64.whl (79.9 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/79.9 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">3.2/79.9 MB</span> <span class=" -Color -Color-Red">95.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">9.3/79.9 MB</span> <span class=" -Color -Color-Red">134.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">16.1/79.9 MB</span> <span class=" -Color -Color-Red">192.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">23.3/79.9 MB</span> <span class=" -Color -Color-Red">202.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">29.7/79.9 MB</span> <span class=" -Color -Color-Red">184.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">36.1/79.9 MB</span> <span class=" -Color -Color-Red">173.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">42.3/79.9 MB</span> <span class=" -Color -Color-Red">181.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">48.7/79.9 MB</span> <span class=" -Color -Color-Red">179.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━ <span class=" -Color -Color-Green">55.0/79.9 MB</span> <span class=" -Color -Color-Red">183.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━ <span class=" -Color -Color-Green">60.1/79.9 MB</span> <span class=" -Color -Color-Red">156.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━ <span class=" -Color -Color-Green">66.8/79.9 MB</span> <span class=" -Color -Color-Red">147.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━ <span class=" -Color -Color-Green">72.8/79.9 MB</span> <span class=" -Color -Color-Red">177.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━ <span class=" -Color -Color-Green">76.2/79.9 MB</span> <span class=" -Color -Color-Red">132.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">113.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">79.9/79.9 MB</span> <span class=" -Color -Color-Red">10.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: lightgbm&gt;=3.0.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (4.1.0)
+Requirement already satisfied: markupsafe&gt;=2.0.1 in /usr/local/lib/python3.10/dist-packages (from pycaret) (2.1.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting matplotlib&lt;=3.6,&gt;=3.3.0 (from pycaret)
+  Downloading matplotlib-3.6.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.8 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/11.8 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">4.1/11.8 MB</span> <span class=" -Color -Color-Red">129.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━ <span class=" -Color -Color-Green">8.4/11.8 MB</span> <span class=" -Color -Color-Red">117.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">11.8/11.8 MB</span> <span class=" -Color -Color-Red">118.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">11.8/11.8 MB</span> <span class=" -Color -Color-Red">118.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11.8/11.8 MB</span> <span class=" -Color -Color-Red">67.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: nbformat&gt;=4.2.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (5.9.2)
+Requirement already satisfied: numba&gt;=0.55.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (0.58.1)
+Requirement already satisfied: numpy&lt;1.27,&gt;=1.21 in /usr/local/lib/python3.10/dist-packages (from pycaret) (1.23.5)
+Requirement already satisfied: pandas&lt;2.0.0,&gt;=1.3.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (1.5.3)
+Collecting plotly-resampler&gt;=0.8.3.1 (from pycaret)
+  Downloading plotly_resampler-0.9.1-py3-none-any.whl (73 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/73.4 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">73.4/73.4 kB</span> <span class=" -Color -Color-Red">8.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: plotly&gt;=5.0.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (5.15.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting pmdarima!=1.8.1,&lt;3.0.0,&gt;=1.8.0 (from pycaret)
+  Downloading pmdarima-2.0.4-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.manylinux_2_28_x86_64.whl (2.1 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/2.1 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.1/2.1 MB</span> <span class=" -Color -Color-Red">69.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: psutil&gt;=5.9.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (5.9.5)
+Collecting pyod&gt;=1.0.8 (from pycaret)
+  Downloading pyod-1.1.2.tar.gz (160 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/160.5 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">160.5/160.5 kB</span> <span class=" -Color -Color-Red">18.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Preparing metadata (setup.py) ... ?25l?25hdone
+Requirement already satisfied: requests&gt;=2.27.1 in /usr/local/lib/python3.10/dist-packages (from pycaret) (2.31.0)
+Collecting schemdraw==0.15 (from pycaret)
+  Downloading schemdraw-0.15-py3-none-any.whl (106 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/106.8 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">106.8/106.8 kB</span> <span class=" -Color -Color-Red">12.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: scikit-learn&lt;1.3.0,&gt;=1.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (1.2.2)
+Collecting scikit-plot&gt;=0.3.7 (from pycaret)
+  Downloading scikit_plot-0.3.7-py3-none-any.whl (33 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting scipy~=1.10.1 (from pycaret)
+  Downloading scipy-1.10.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (34.4 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/34.4 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">6.0/34.4 MB</span> <span class=" -Color -Color-Red">134.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">11.0/34.4 MB</span> <span class=" -Color -Color-Red">140.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">16.0/34.4 MB</span> <span class=" -Color -Color-Red">138.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">21.0/34.4 MB</span> <span class=" -Color -Color-Red">138.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━ <span class=" -Color -Color-Green">25.8/34.4 MB</span> <span class=" -Color -Color-Red">135.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━ <span class=" -Color -Color-Green">30.6/34.4 MB</span> <span class=" -Color -Color-Red">132.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">131.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">34.4/34.4 MB</span> <span class=" -Color -Color-Red">23.0 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting sktime!=0.17.1,!=0.17.2,!=0.18.0,&lt;0.22.0,&gt;=0.16.1 (from pycaret)
+  Downloading sktime-0.21.1-py3-none-any.whl (17.1 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/17.1 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.6/17.1 MB</span> <span class=" -Color -Color-Red">138.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">10.1/17.1 MB</span> <span class=" -Color -Color-Red">132.4 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━ <span class=" -Color -Color-Green">15.0/17.1 MB</span> <span class=" -Color -Color-Red">129.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">17.1/17.1 MB</span> <span class=" -Color -Color-Red">131.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">17.1/17.1 MB</span> <span class=" -Color -Color-Red">131.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">17.1/17.1 MB</span> <span class=" -Color -Color-Red">60.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: statsmodels&gt;=0.12.1 in /usr/local/lib/python3.10/dist-packages (from pycaret) (0.14.0)
+Collecting tbats&gt;=1.1.3 (from pycaret)
+  Downloading tbats-1.1.3-py3-none-any.whl (44 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/44.0 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">44.0/44.0 kB</span> <span class=" -Color -Color-Red">4.3 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: tqdm&gt;=4.62.0 in /usr/local/lib/python3.10/dist-packages (from pycaret) (4.66.1)
+Requirement already satisfied: xxhash in /usr/local/lib/python3.10/dist-packages (from pycaret) (3.4.1)
+Requirement already satisfied: yellowbrick&gt;=1.4 in /usr/local/lib/python3.10/dist-packages (from pycaret) (1.5)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting wurlitzer (from pycaret)
+  Downloading wurlitzer-3.0.3-py3-none-any.whl (7.3 kB)
+Requirement already satisfied: patsy&gt;=0.5.1 in /usr/local/lib/python3.10/dist-packages (from category-encoders&gt;=2.4.0-&gt;pycaret) (0.5.3)
+Requirement already satisfied: packaging in /usr/local/lib/python3.10/dist-packages (from deprecation&gt;=2.1.0-&gt;pycaret) (23.2)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from imbalanced-learn&gt;=0.8.1-&gt;pycaret) (3.2.0)
+Requirement already satisfied: zipp&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from importlib-metadata&gt;=4.12.0-&gt;pycaret) (3.17.0)
+Requirement already satisfied: setuptools&gt;=18.5 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (67.7.2)
+Requirement already satisfied: jedi&gt;=0.16 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (0.19.1)
+Requirement already satisfied: decorator in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (4.4.2)
+Requirement already satisfied: pickleshare in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (0.7.5)
+Requirement already satisfied: traitlets&gt;=4.2 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (5.7.1)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (3.0.41)
+Requirement already satisfied: pygments in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (2.16.1)
+Requirement already satisfied: backcall in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (0.2.0)
+Requirement already satisfied: matplotlib-inline in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (0.1.6)
+Requirement already satisfied: pexpect&gt;4.3 in /usr/local/lib/python3.10/dist-packages (from ipython&gt;=5.5.0-&gt;pycaret) (4.8.0)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.6.5-&gt;pycaret) (5.5.6)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.6.5-&gt;pycaret) (0.2.0)
+Requirement already satisfied: widgetsnbextension~=3.6.0 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.6.5-&gt;pycaret) (3.6.6)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /usr/local/lib/python3.10/dist-packages (from ipywidgets&gt;=7.6.5-&gt;pycaret) (3.0.9)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: contourpy&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib&lt;=3.6,&gt;=3.3.0-&gt;pycaret) (1.2.0)
+Requirement already satisfied: cycler&gt;=0.10 in /usr/local/lib/python3.10/dist-packages (from matplotlib&lt;=3.6,&gt;=3.3.0-&gt;pycaret) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib&lt;=3.6,&gt;=3.3.0-&gt;pycaret) (4.44.3)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib&lt;=3.6,&gt;=3.3.0-&gt;pycaret) (1.4.5)
+Requirement already satisfied: pillow&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from matplotlib&lt;=3.6,&gt;=3.3.0-&gt;pycaret) (9.4.0)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /usr/local/lib/python3.10/dist-packages (from matplotlib&lt;=3.6,&gt;=3.3.0-&gt;pycaret) (3.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /usr/local/lib/python3.10/dist-packages (from matplotlib&lt;=3.6,&gt;=3.3.0-&gt;pycaret) (2.8.2)
+Requirement already satisfied: fastjsonschema in /usr/local/lib/python3.10/dist-packages (from nbformat&gt;=4.2.0-&gt;pycaret) (2.19.0)
+Requirement already satisfied: jsonschema&gt;=2.6 in /usr/local/lib/python3.10/dist-packages (from nbformat&gt;=4.2.0-&gt;pycaret) (4.19.2)
+Requirement already satisfied: jupyter-core in /usr/local/lib/python3.10/dist-packages (from nbformat&gt;=4.2.0-&gt;pycaret) (5.5.0)
+Requirement already satisfied: llvmlite&lt;0.42,&gt;=0.41.0dev0 in /usr/local/lib/python3.10/dist-packages (from numba&gt;=0.55.0-&gt;pycaret) (0.41.1)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.10/dist-packages (from pandas&lt;2.0.0,&gt;=1.3.0-&gt;pycaret) (2023.3.post1)
+Requirement already satisfied: tenacity&gt;=6.2.0 in /usr/local/lib/python3.10/dist-packages (from plotly&gt;=5.0.0-&gt;pycaret) (8.2.3)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting dash&lt;3.0.0,&gt;=2.11.0 (from plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading dash-2.14.1-py3-none-any.whl (10.4 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/10.4 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">5.6/10.4 MB</span> <span class=" -Color -Color-Red">141.6 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">10.4/10.4 MB</span> <span class=" -Color -Color-Red">139.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ <span class=" -Color -Color-Green">10.4/10.4 MB</span> <span class=" -Color -Color-Red">139.5 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:01</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">10.4/10.4 MB</span> <span class=" -Color -Color-Red">71.2 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting orjson&lt;4.0.0,&gt;=3.8.0 (from plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading orjson-3.9.10-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (138 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/138.7 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">138.7/138.7 kB</span> <span class=" -Color -Color-Red">11.1 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting trace-updater&gt;=0.0.8 (from plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading trace_updater-0.0.9.1-py3-none-any.whl (185 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/185.2 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">185.2/185.2 kB</span> <span class=" -Color -Color-Red">17.9 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting tsdownsample==0.1.2 (from plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading tsdownsample-0.1.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.3 MB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/2.3 MB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">2.3/2.3 MB</span> <span class=" -Color -Color-Red">89.8 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25hRequirement already satisfied: Cython!=0.29.18,!=0.29.31,&gt;=0.29 in /usr/local/lib/python3.10/dist-packages (from pmdarima!=1.8.1,&lt;3.0.0,&gt;=1.8.0-&gt;pycaret) (3.0.5)
+Requirement already satisfied: urllib3 in /usr/local/lib/python3.10/dist-packages (from pmdarima!=1.8.1,&lt;3.0.0,&gt;=1.8.0-&gt;pycaret) (2.0.7)
+Requirement already satisfied: six in /usr/local/lib/python3.10/dist-packages (from pyod&gt;=1.0.8-&gt;pycaret) (1.16.0)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.27.1-&gt;pycaret) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.27.1-&gt;pycaret) (3.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.10/dist-packages (from requests&gt;=2.27.1-&gt;pycaret) (2023.7.22)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting deprecated&gt;=1.2.13 (from sktime!=0.17.1,!=0.17.2,!=0.18.0,&lt;0.22.0,&gt;=0.16.1-&gt;pycaret)
+  Downloading Deprecated-1.2.14-py2.py3-none-any.whl (9.6 kB)
+Collecting scikit-base&lt;0.6.0 (from sktime!=0.17.1,!=0.17.2,!=0.18.0,&lt;0.22.0,&gt;=0.16.1-&gt;pycaret)
+  Downloading scikit_base-0.5.2-py3-none-any.whl (118 kB)
+?25l     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">0.0/119.0 kB</span> <span class=" -Color -Color-Red">?</span> eta <span class=" -Color -Color-Cyan">-:--:--</span>
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ <span class=" -Color -Color-Green">119.0/119.0 kB</span> <span class=" -Color -Color-Red">15.7 MB/s</span> eta <span class=" -Color -Color-Cyan">0:00:00</span>
+?25h
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: Flask&lt;3.1,&gt;=1.0.4 in /usr/local/lib/python3.10/dist-packages (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret) (2.2.5)
+Requirement already satisfied: Werkzeug&lt;3.1 in /usr/local/lib/python3.10/dist-packages (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret) (3.0.1)
+Collecting dash-html-components==2.0.0 (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading dash_html_components-2.0.0-py3-none-any.whl (4.1 kB)
+Collecting dash-core-components==2.0.0 (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading dash_core_components-2.0.0-py3-none-any.whl (3.8 kB)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting dash-table==5.0.0 (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading dash_table-5.0.0-py3-none-any.whl (3.9 kB)
+Requirement already satisfied: typing-extensions&gt;=4.1.1 in /usr/local/lib/python3.10/dist-packages (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret) (4.5.0)
+Collecting retrying (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading retrying-1.3.4-py3-none-any.whl (11 kB)
+Collecting ansi2html (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret)
+  Downloading ansi2html-1.8.0-py3-none-any.whl (16 kB)
+Requirement already satisfied: nest-asyncio in /usr/local/lib/python3.10/dist-packages (from dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret) (1.5.8)
+Requirement already satisfied: wrapt&lt;2,&gt;=1.10 in /usr/local/lib/python3.10/dist-packages (from deprecated&gt;=1.2.13-&gt;sktime!=0.17.1,!=0.17.2,!=0.18.0,&lt;0.22.0,&gt;=0.16.1-&gt;pycaret) (1.14.1)
+Requirement already satisfied: jupyter-client in /usr/local/lib/python3.10/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (6.1.12)
+Requirement already satisfied: tornado&gt;=4.2 in /usr/local/lib/python3.10/dist-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (6.3.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.3 in /usr/local/lib/python3.10/dist-packages (from jedi&gt;=0.16-&gt;ipython&gt;=5.5.0-&gt;pycaret) (0.8.3)
+Requirement already satisfied: attrs&gt;=22.2.0 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;pycaret) (23.1.0)
+Requirement already satisfied: jsonschema-specifications&gt;=2023.03.6 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;pycaret) (2023.11.1)
+Requirement already satisfied: referencing&gt;=0.28.4 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;pycaret) (0.31.0)
+Requirement already satisfied: rpds-py&gt;=0.7.1 in /usr/local/lib/python3.10/dist-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;pycaret) (0.13.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /usr/local/lib/python3.10/dist-packages (from pexpect&gt;4.3-&gt;ipython&gt;=5.5.0-&gt;pycaret) (0.7.0)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.10/dist-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=5.5.0-&gt;pycaret) (0.2.10)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: notebook&gt;=4.4.1 in /usr/local/lib/python3.10/dist-packages (from widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (6.5.5)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: platformdirs&gt;=2.5 in /usr/local/lib/python3.10/dist-packages (from jupyter-core-&gt;nbformat&gt;=4.2.0-&gt;pycaret) (4.0.0)
+Requirement already satisfied: itsdangerous&gt;=2.0 in /usr/local/lib/python3.10/dist-packages (from Flask&lt;3.1,&gt;=1.0.4-&gt;dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret) (2.1.2)
+Requirement already satisfied: click&gt;=8.0 in /usr/local/lib/python3.10/dist-packages (from Flask&lt;3.1,&gt;=1.0.4-&gt;dash&lt;3.0.0,&gt;=2.11.0-&gt;plotly-resampler&gt;=0.8.3.1-&gt;pycaret) (8.1.7)
+Requirement already satisfied: pyzmq&lt;25,&gt;=17 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (23.2.1)
+Requirement already satisfied: argon2-cffi in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (23.1.0)
+Requirement already satisfied: nbconvert&gt;=5 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (6.5.4)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.8.2)
+Requirement already satisfied: terminado&gt;=0.8.3 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.18.0)
+Requirement already satisfied: prometheus-client in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.18.0)
+Requirement already satisfied: nbclassic&gt;=0.4.7 in /usr/local/lib/python3.10/dist-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.0.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: jupyter-server&gt;=1.8 in /usr/local/lib/python3.10/dist-packages (from nbclassic&gt;=0.4.7-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.24.0)
+Requirement already satisfied: notebook-shim&gt;=0.2.3 in /usr/local/lib/python3.10/dist-packages (from nbclassic&gt;=0.4.7-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.2.3)
+Requirement already satisfied: lxml in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (4.9.3)
+Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (4.11.2)
+Requirement already satisfied: bleach in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (6.1.0)
+Requirement already satisfied: defusedxml in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.7.1)
+Requirement already satisfied: entrypoints&gt;=0.2.2 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.4)
+Requirement already satisfied: jupyterlab-pygments in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.2.2)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.8.4)
+Requirement already satisfied: nbclient&gt;=0.5.0 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.7.4)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.5.0)
+Requirement already satisfied: tinycss2 in /usr/local/lib/python3.10/dist-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.2.1)
+Requirement already satisfied: argon2-cffi-bindings in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (21.2.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: anyio&lt;4,&gt;=3.1.0 in /usr/local/lib/python3.10/dist-packages (from jupyter-server&gt;=1.8-&gt;nbclassic&gt;=0.4.7-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (3.7.1)
+Requirement already satisfied: websocket-client in /usr/local/lib/python3.10/dist-packages (from jupyter-server&gt;=1.8-&gt;nbclassic&gt;=0.4.7-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.6.4)
+Requirement already satisfied: cffi&gt;=1.0.1 in /usr/local/lib/python3.10/dist-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.16.0)
+Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.10/dist-packages (from beautifulsoup4-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (2.5)
+Requirement already satisfied: webencodings in /usr/local/lib/python3.10/dist-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (0.5.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: sniffio&gt;=1.1 in /usr/local/lib/python3.10/dist-packages (from anyio&lt;4,&gt;=3.1.0-&gt;jupyter-server&gt;=1.8-&gt;nbclassic&gt;=0.4.7-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.3.0)
+Requirement already satisfied: exceptiongroup in /usr/local/lib/python3.10/dist-packages (from anyio&lt;4,&gt;=3.1.0-&gt;jupyter-server&gt;=1.8-&gt;nbclassic&gt;=0.4.7-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (1.1.3)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/dist-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.6.0-&gt;ipywidgets&gt;=7.6.5-&gt;pycaret) (2.21)
+Building wheels for collected packages: pyod
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for pyod (setup.py) ... ?25l?25hdone
+  Created wheel for pyod: filename=pyod-1.1.2-py3-none-any.whl size=190289 sha256=0b0f5c6475af11da3c9719854ed8ab5b539954ee7a84c2e56c0e4b1734fe8a3a
+  Stored in directory: /root/.cache/pip/wheels/81/1b/61/aa85b78c3c0c8871f4231e3f4a03bb23cecb7db829498380ee
+Successfully built pyod
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Installing collected packages: trace-updater, kaleido, dash-table, dash-html-components, dash-core-components, wurlitzer, tsdownsample, scipy, scikit-base, schemdraw, retrying, orjson, deprecation, deprecated, ansi2html, matplotlib, sktime, scikit-plot, pyod, dash, pmdarima, plotly-resampler, category-encoders, tbats, pycaret
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Attempting uninstall: scipy
+    Found existing installation: scipy 1.11.3
+    Uninstalling scipy-1.11.3:
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Successfully uninstalled scipy-1.11.3
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Red">ERROR: Operation cancelled by user</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Library</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -498,28 +839,6 @@ document.write(`
 <span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">RandomOverSampler</span>
 <span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">pickle</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-1-52f28334b535&gt;</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">imblearn.over_sampling</span> <span class="kn">import</span> <span class="n">RandomOverSampler</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">pycaret.classification</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pycaret&#39;
-
-<span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NOTE</span>: If your import is failing due to a missing package, you can
-<span class="n">manually</span> <span class="n">install</span> <span class="n">dependencies</span> <span class="n">using</span> <span class="n">either</span> <span class="o">!</span>pip<span class="w"> </span>or<span class="w"> </span>!apt.
-
-<span class="n">To</span> <span class="n">view</span> <span class="n">examples</span> <span class="n">of</span> <span class="n">installing</span> <span class="n">some</span> <span class="n">common</span> <span class="n">dependencies</span><span class="p">,</span> <span class="n">click</span> <span class="n">the</span>
-<span class="s2">&quot;Open Examples&quot;</span> <span class="n">button</span> <span class="n">below</span><span class="o">.</span>
-<span class="gt">---------------------------------------------------------------------------</span>
 </pre></div>
 </div>
 </div>
@@ -536,7 +855,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-b1f36236-60e5-4a06-9fa8-a481490e9f1d" class="colab-df-container">
+  <div id="df-7dac6bcd-f3e8-4ba1-9ac8-c924c7f4018e" class="colab-df-container">
     <div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -754,7 +1073,7 @@ document.write(`
     <div class="colab-df-buttons">
 
   <div class="colab-df-container">
-    <button class="colab-df-convert" onclick="convertToInteractive('df-b1f36236-60e5-4a06-9fa8-a481490e9f1d')"
+    <button class="colab-df-convert" onclick="convertToInteractive('df-7dac6bcd-f3e8-4ba1-9ac8-c924c7f4018e')"
             title="Convert this dataframe to an interactive table."
             style="display:none;">
 
@@ -806,12 +1125,12 @@ document.write(`
 
     <script>
       const buttonEl =
-        document.querySelector('#df-b1f36236-60e5-4a06-9fa8-a481490e9f1d button.colab-df-convert');
+        document.querySelector('#df-7dac6bcd-f3e8-4ba1-9ac8-c924c7f4018e button.colab-df-convert');
       buttonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
 
       async function convertToInteractive(key) {
-        const element = document.querySelector('#df-b1f36236-60e5-4a06-9fa8-a481490e9f1d');
+        const element = document.querySelector('#df-7dac6bcd-f3e8-4ba1-9ac8-c924c7f4018e');
         const dataTable =
           await google.colab.kernel.invokeFunction('convertToInteractive',
                                                     [key], {});
@@ -831,8 +1150,8 @@ document.write(`
   </div>
 
 
-<div id="df-65d8d2bf-660f-40b8-8eed-81d3ea96658e">
-  <button class="colab-df-quickchart" onclick="quickchart('df-65d8d2bf-660f-40b8-8eed-81d3ea96658e')"
+<div id="df-1dc2fa33-2805-4d94-a688-0a78b5f6b389">
+  <button class="colab-df-quickchart" onclick="quickchart('df-1dc2fa33-2805-4d94-a688-0a78b5f6b389')"
             title="Suggest charts"
             style="display:none;">
 
@@ -951,7 +1270,7 @@ document.write(`
     }
     (() => {
       let quickchartButtonEl =
-        document.querySelector('#df-65d8d2bf-660f-40b8-8eed-81d3ea96658e button');
+        document.querySelector('#df-1dc2fa33-2805-4d94-a688-0a78b5f6b389 button');
       quickchartButtonEl.style.display =
         google.colab.kernel.accessAllowed ? 'block' : 'none';
     })();
@@ -963,7 +1282,7 @@ document.write(`
 </div>
 </section>
 <section id="penjelasan-fitur-fitur">
-<h3>Penjelasan Fitur-fitur:<a class="headerlink" href="#penjelasan-fitur-fitur" title="Permalink to this heading">#</a></h3>
+<h4>Penjelasan Fitur-fitur:<a class="headerlink" href="#penjelasan-fitur-fitur" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the column names to identify the correct target variable</span>
@@ -1001,7 +1320,7 @@ Jika “death event” memiliki nilai True, ini berarti bahwa pasien tersebut me
 </section>
 </section>
 <section id="eksplorasi-dataset-satistik-dataset">
-<h2>Eksplorasi Dataset / Satistik Dataset:<a class="headerlink" href="#eksplorasi-dataset-satistik-dataset" title="Permalink to this heading">#</a></h2>
+<h3>Eksplorasi Dataset / Satistik Dataset:<a class="headerlink" href="#eksplorasi-dataset-satistik-dataset" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1180,10 +1499,10 @@ max        1.00000
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-prepocessing">
-<h1>Data Prepocessing<a class="headerlink" href="#data-prepocessing" title="Permalink to this heading">#</a></h1>
+<section id="data-prepocessing">
+<h2>Data Prepocessing<a class="headerlink" href="#data-prepocessing" title="Permalink to this heading">#</a></h2>
 <section id="oversampling">
-<h2>Oversampling<a class="headerlink" href="#oversampling" title="Permalink to this heading">#</a></h2>
+<h3>Oversampling<a class="headerlink" href="#oversampling" title="Permalink to this heading">#</a></h3>
 <p>Melihat jumlah masing-masing target pada kolom ‘death event’:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1257,7 +1576,7 @@ Name: DEATH_EVENT, dtype: int64
 </div>
 </section>
 <section id="normalisasi-menggunakan-zscore">
-<h2>Normalisasi Menggunakan Zscore<a class="headerlink" href="#normalisasi-menggunakan-zscore" title="Permalink to this heading">#</a></h2>
+<h3>Normalisasi Menggunakan Zscore<a class="headerlink" href="#normalisasi-menggunakan-zscore" title="Permalink to this heading">#</a></h3>
 <p>Normalisasi Z-score adalah teknik normalisasi yang digunakan untuk mengubah setiap nilai dalam suatu variabel ke dalam skala yang memiliki rata-rata nol dan deviasi standar satu. Ini adalah cara umum untuk menormalkan data sehingga nilai-nilai yang berbeda dari variabel yang sama dapat dibandingkan secara langsung.</p>
 <p>Proses normalisasi Z-score melibatkan mengurangkan rata-rata dari setiap nilai dalam variabel dan membaginya dengan deviasi standar. Formula normalisasi Z-score untuk suatu nilai (x) dalam variabel (X) adalah sebagai berikut:</p>
 <p><span class="math notranslate nohighlight">\([ z = \frac{{x - \text{{mean}}(X)}}{{\text{{std}}(X)}} ]\)</span></p>
@@ -1419,10 +1738,10 @@ Lalu secara default pycaret akan membagi dataset menjadi 70% data train dan 30% 
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="modelling">
-<h1>Modelling<a class="headerlink" href="#modelling" title="Permalink to this heading">#</a></h1>
+<section id="modelling">
+<h2>Modelling<a class="headerlink" href="#modelling" title="Permalink to this heading">#</a></h2>
 <section id="mencari-model-terbaik-menggunakan-pycaret">
-<h2>Mencari Model Terbaik Menggunakan Pycaret<a class="headerlink" href="#mencari-model-terbaik-menggunakan-pycaret" title="Permalink to this heading">#</a></h2>
+<h3>Mencari Model Terbaik Menggunakan Pycaret<a class="headerlink" href="#mencari-model-terbaik-menggunakan-pycaret" title="Permalink to this heading">#</a></h3>
 <p>Pycaret adalah library Python yang menyederhanakan proses pengembangan model machine learning. Dengan fitur otomatis seperti setup data, pemilihan model, optimasi hyperparameter, dan visualisasi hasil, Pycaret memungkinkan pengguna untuk fokus pada inti pemodelan tanpa menulis banyak kode. Berikut implementasi pycaret untuk mencari model terbaik untuk memprediksi resiko gagal jantung pada pasien:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1669,17 +1988,17 @@ Lalu secara default pycaret akan membagi dataset menjadi 70% data train dan 30% 
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="evaluasi">
-<h1>Evaluasi<a class="headerlink" href="#evaluasi" title="Permalink to this heading">#</a></h1>
+<section id="evaluasi">
+<h2>Evaluasi<a class="headerlink" href="#evaluasi" title="Permalink to this heading">#</a></h2>
 <section id="menyimpan-model-terbaik-menggunakan-pycaret">
-<h2>Menyimpan Model terbaik Menggunakan Pycaret<a class="headerlink" href="#menyimpan-model-terbaik-menggunakan-pycaret" title="Permalink to this heading">#</a></h2>
+<h3>Menyimpan Model terbaik Menggunakan Pycaret<a class="headerlink" href="#menyimpan-model-terbaik-menggunakan-pycaret" title="Permalink to this heading">#</a></h3>
 <p>Bisa dilihat diatas bahwa model terbaik salah satunya adalah Random Forest Classifier. maka kita simpan model Random Forest Classifier untuk prediksi nantinya.</p>
 <section id="random-forest-classifier">
-<h3>Random Forest Classifier:<a class="headerlink" href="#random-forest-classifier" title="Permalink to this heading">#</a></h3>
+<h4>Random Forest Classifier:<a class="headerlink" href="#random-forest-classifier" title="Permalink to this heading">#</a></h4>
 <p>Random Forest adalah algoritma machine learning yang termasuk dalam kategori ensemble learning. Ensemble learning menggabungkan prediksi dari beberapa model untuk meningkatkan performa dan ketahanan terhadap overfitting. Random Forest dapat digunakan untuk tugas klasifikasi (seperti prediksi kategori) dan regresi (prediksi nilai numerik).</p>
 </section>
 <section id="cara-kerja">
-<h3>Cara Kerja:<a class="headerlink" href="#cara-kerja" title="Permalink to this heading">#</a></h3>
+<h4>Cara Kerja:<a class="headerlink" href="#cara-kerja" title="Permalink to this heading">#</a></h4>
 <ol class="arabic simple">
 <li><p><strong>Pembuatan Banyak Pohon (Trees):</strong></p>
 <ul class="simple">
@@ -1710,6 +2029,21 @@ Lalu secara default pycaret akan membagi dataset menjadi 70% data train dan 30% 
 <p>jika (N) adalah jumlah pohon dalam Random Forest, dan (h_i(x)) adalah hasil prediksi dari pohon ke-i, maka hasil akhir (H(x)) dari Random Forest dapat dihitung sebagai berikut:</p>
 <p><strong>Rumus untuk Klasifikasi Random Forest:</strong></p>
 <p><span class="math notranslate nohighlight">\([ H(x) = \text{{mode}}(h_1(x), h_2(x), \ldots, h_N(x)) \)</span>]</p>
+<p>penjelasan:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((H(x)\)</span>) adalah prediksi akhir dari ensemble model.</p></li>
+<li><p><span class="math notranslate nohighlight">\((h_i(x)\)</span>) adalah prediksi dari model ke-<span class="math notranslate nohighlight">\((i\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\((\text{{mode}}\)</span>) merujuk pada nilai yang paling sering muncul atau kelas yang paling sering diprediksi di antara prediksi model-individu.</p></li>
+</ul>
+<p>Rumus ini, sesuai dengan prinsip mayoritas voting pada ensambel model seperti Random Forest. Model ensambel, seperti Random Forest, cenderung memberikan performa yang baik dalam berbagai jenis dataset, termasuk dataset kesehatan seperti “Heart failure clinical records”.</p>
+<p>Dalam kasus dataset kesehatan seperti ini, Random Forest bisa menjadi pilihan yang baik karena:</p>
+<ol class="arabic simple">
+<li><p>Robust terhadap Overfitting: Random Forest mampu mengatasi masalah overfitting yang mungkin muncul pada pohon keputusan tunggal, karena hasil mayoritas dari banyak pohon keputusan.</p></li>
+<li><p>Tidak Sensitif terhadap Outliers: Random Forest dapat menangani data yang tidak seimbang dan keberadaan outlier dalam dataset.</p></li>
+<li><p>Interpretability: Meskipun Random Forest cenderung tidak seinterpretatif pohon keputusan tunggal, tetapi masih memberikan pemahaman yang baik tentang pentingnya fitur dalam membuat keputusan.</p></li>
+<li><p>Handling Fitur Numerik dan Kategorikal: Random Forest dapat menangani baik fitur numerik maupun kategorikal tanpa memerlukan transformasi khusus.</p></li>
+<li><p>Performa yang Baik secara Umum: Random Forest umumnya memberikan performa yang baik tanpa perlu penyesuaian parameter yang terlalu rumit.</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">best_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">)</span>
@@ -1882,9 +2216,8 @@ Lalu secara default pycaret akan membagi dataset menjadi 70% data train dan 30% 
 </section>
 </section>
 <section id="prediksi-death-event-menggunakan-random-forest-classifier-rf-dengan-data-baru">
-<h2>Prediksi Death_Event Menggunakan Random Forest Classifier (rf) dengan Data Baru<a class="headerlink" href="#prediksi-death-event-menggunakan-random-forest-classifier-rf-dengan-data-baru" title="Permalink to this heading">#</a></h2>
-<section id="prediksi-menggunakan-random-forest-untuk-klasifikasi">
-<h3>Prediksi Menggunakan Random Forest untuk Klasifikasi:<a class="headerlink" href="#prediksi-menggunakan-random-forest-untuk-klasifikasi" title="Permalink to this heading">#</a></h3>
+<h3>Prediksi Death_Event Menggunakan Random Forest Classifier (rf) dengan Data Baru<a class="headerlink" href="#prediksi-death-event-menggunakan-random-forest-classifier-rf-dengan-data-baru" title="Permalink to this heading">#</a></h3>
+<p><strong>Prediksi Menggunakan Random Forest untuk Klasifikasi:</strong></p>
 <ol class="arabic simple">
 <li><p><strong>Persiapkan Data Baru:</strong></p>
 <ul class="simple">
@@ -1907,9 +2240,7 @@ Lalu secara default pycaret akan membagi dataset menjadi 70% data train dan 30% 
 </ul>
 </li>
 </ol>
-</section>
-<section id="contoh-kode">
-<h3>Contoh Kode:<a class="headerlink" href="#contoh-kode" title="Permalink to this heading">#</a></h3>
+<p>Contoh Kode:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Membaca data baru yang akan diprediksi</span>
 <span class="n">new_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">age</span><span class="p">,</span> <span class="n">anaemia</span><span class="p">,</span> <span class="n">creatinine_phosphokinase</span><span class="p">,</span> <span class="n">diabetes</span><span class="p">,</span> <span class="n">ejection_fraction</span><span class="p">,</span> <span class="n">high_blood_pressure</span><span class="p">,</span> <span class="n">platelets</span><span class="p">,</span> <span class="n">serum_creatinine</span><span class="p">,</span> <span class="n">serum_sodium</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">smoking</span><span class="p">,</span> <span class="n">time</span><span class="p">]],</span> <span class="n">columns</span><span class="o">=</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
@@ -1983,12 +2314,12 @@ Transformation Pipeline and Model Successfully Loaded
 </div>
 </section>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="deployment">
-<h1>Deployment<a class="headerlink" href="#deployment" title="Permalink to this heading">#</a></h1>
+<section id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this heading">#</a></h2>
 <section id="link-streamlit-aplikasi-prediksi-pada-dataset-heart-failure-clinical-records">
-<h2>Link Streamlit/Aplikasi Prediksi pada dataset Heart failure clinical records:<a class="headerlink" href="#link-streamlit-aplikasi-prediksi-pada-dataset-heart-failure-clinical-records" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://psd-jantung.streamlit.app/">https://psd-jantung.streamlit.app</a></p>
+<h3>Link Streamlit/Aplikasi Prediksi pada dataset Heart failure clinical records:<a class="headerlink" href="#link-streamlit-aplikasi-prediksi-pada-dataset-heart-failure-clinical-records" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://psd-prediksi-jantung.streamlit.app/">https://psd-prediksi-jantung.streamlit.app</a></p>
+</section>
 </section>
 </section>
 
@@ -2046,48 +2377,42 @@ Transformation Pipeline and Model Successfully Loaded
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Analisis dan Prediksi pada dataset Heart failure clinical records Menggunakan Pycaret.</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">Business understanding</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding">Business understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-analisis">Tujuan Analisis:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-memahami-data">Data understanding / Memahami Data</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset-dan-tujuan-dataset">Deskripsi Dataset Dan Tujuan Dataset:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur-fitur">Penjelasan Fitur-fitur:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding-memahami-data">Data understanding / Memahami Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset">Deskripsi Dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deskripsi-dataset-dan-tujuan-dataset">Deskripsi Dataset Dan Tujuan Dataset:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-fitur-fitur">Penjelasan Fitur-fitur:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-satistik-dataset">Eksplorasi Dataset / Satistik Dataset:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eksplorasi-dataset-satistik-dataset">Eksplorasi Dataset / Satistik Dataset:</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oversampling">Oversampling</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menggunakan-zscore">Normalisasi Menggunakan Zscore</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-prepocessing">Data Prepocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oversampling">Oversampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-menggunakan-zscore">Normalisasi Menggunakan Zscore</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-model-terbaik-menggunakan-pycaret">Mencari Model Terbaik Menggunakan Pycaret</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelling">Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-model-terbaik-menggunakan-pycaret">Mencari Model Terbaik Menggunakan Pycaret</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-terbaik-menggunakan-pycaret">Menyimpan Model terbaik Menggunakan Pycaret</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">Cara Kerja:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi">Evaluasi</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-terbaik-menggunakan-pycaret">Menyimpan Model terbaik Menggunakan Pycaret</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cara-kerja">Cara Kerja:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-death-event-menggunakan-random-forest-classifier-rf-dengan-data-baru">Prediksi Death_Event Menggunakan Random Forest Classifier (rf) dengan Data Baru</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-menggunakan-random-forest-untuk-klasifikasi">Prediksi Menggunakan Random Forest untuk Klasifikasi:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-kode">Contoh Kode:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-death-event-menggunakan-random-forest-classifier-rf-dengan-data-baru">Prediksi Death_Event Menggunakan Random Forest Classifier (rf) dengan Data Baru</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#link-streamlit-aplikasi-prediksi-pada-dataset-heart-failure-clinical-records">Link Streamlit/Aplikasi Prediksi pada dataset Heart failure clinical records:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deployment">Deployment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#link-streamlit-aplikasi-prediksi-pada-dataset-heart-failure-clinical-records">Link Streamlit/Aplikasi Prediksi pada dataset Heart failure clinical records:</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
